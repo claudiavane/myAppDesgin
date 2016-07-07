@@ -1,0 +1,57 @@
+<ion-modal-view >
+  <ion-header-bar align-title="center" class="bar nav-bar" >
+
+      <h4 class="title" style="color: #fff;">Log a Non Service Call</h4>
+
+      <div class="buttons">
+
+        <!--a class="button ion-close button-clear" href="#" ng-click="closeLogNonService()" style="font-size:22px !important; color: #FFF;">        
+        </a>&nbsp;&nbsp;&nbsp;-->
+        <a class="button icon-left ion-android-close button-clear button-assertive" style="color:#fff" ng-click="closeLogNonService()">Cancel</a>&nbsp;&nbsp;&nbsp;
+        <a class="button icon-left ion-android-done button-clear button-assertive" style="color:#fff" ng-click="closeLogNonService()">Save</a>
+        
+      </div>
+  </ion-header-bar>
+
+  <ion-content >
+           
+      <div class="list">
+          <label class="item item-input">
+            <span class="input-label">Calls Details</span>
+            <input type="text" ng-model="dataNonServ.callDetail">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Contact's First Name</span>
+            <input type="text" ng-model="dataNonServ.contactName">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Contact's Last Name</span>
+            <input type="text" ng-model="dataNonServ.contactLastName">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Contact's Phone Number</span>
+            <input type="text" ng-model="dataNonServ.contactPhoneNumber">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Contact's Email Address</span>
+            <input type="text" ng-model="dataNonServ.contactEmail">
+          </label>
+          <label class="item item-input item-select">
+            <span class="input-label">Department</span>
+            <select ng-model="typeSelected.description" style="background-color: inherit;">
+                <option ng-repeat="each in departments" value="{{each.description}}">
+                    {{each.description}}
+                </option>
+            </select>
+          </label>
+
+          <label class="item item-input">
+            <span class="input-label">Department Specific Information</span>
+            <input type="text" ng-model="dataNonServ.departmentSpec">
+          </label>
+
+      </div>
+      
+  </ion-content>
+
+</ion-modal-view>

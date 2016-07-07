@@ -1,0 +1,148 @@
+<ion-view view-title="Material/Stock Items" name="create-request-view">
+    <ion-nav-title >
+        <span ng-show="isSplit">Material/Stock Items for split</span>
+        <span ng-show="!isSplit">Material/Stock Items</span>
+    </ion-nav-title>
+    
+    <ion-nav-buttons side="right">
+       
+        <!--a class="button ion-merge button-clear" href="#" ng-click="split()" style="font-size:22px !important; color: #FFF;">               
+        </a>&nbsp;&nbsp;-->        
+        <a class="button button-icon ion-android-close button-clear" style="color: #FFF;" ng-click="data.showDelete = false" ng-show="data.showDelete"> Cancel&nbsp;&nbsp;&nbsp; 
+        </a>     
+        <a class="button button-icon ion-android-done button-clear" style="color: #FFF;" ng-click="" ng-show="data.showDelete"> Done&nbsp;&nbsp;&nbsp; 
+        </a>        
+        <a class="button button-icon ion-trash-b button-clear" style="color: #FFF;" ng-click="data.showDelete = true" ng-show="!data.showDelete"> Delete&nbsp;&nbsp;&nbsp;
+        </a>    
+        <a class="button button-icon ion-plus-round button-clear" ng-click="addProduct()" style="color: #FFF;"> Add
+        </a>
+
+    </ion-nav-buttons>
+
+    <div class="tabs-striped tabs-color-dark">
+
+      <ion-tabs class="tabs-stable">
+
+          <ion-tab title="Materials" style="font-weight: 800;">    
+              <!--a class="button btn btn-right light" href="#/dash_material_add/{{activityId}}"><i class="ion-plus"></i></a-->
+              
+              <ion-content class="has-header" >
+                  <div class="spacer" style="height: 82px;"></div>
+
+                  <!--<div class="item item-button-right item-divider " style="height: 55px;">
+                                        
+                      <!--a class="button ion-plus-round button-clear button-dark " ng-click='clearCanvas()' style="font-size:34px !important; position: absolute; top: 1px; right: 45px;"></a>
+
+                      <a class="button ion-trash-b button-clear button-dark " ng-click='clearCanvas()' style="font-size:34px !important; position: absolute; top: 1px; right: 5px;"></a>
+                      <a class="button icon-left ion-trash-b button-dark" style="font-size:18px !important; position: absolute; top: 5px; right: 93px;" ng-click="data.showDelete = true" ng-show="!data.showDelete">Delete</a>
+
+                      <a class="button icon-left ion-android-close button-dark" style="font-size:18px !important; position: absolute; top: 5px; right: 93px;" ng-click="data.showDelete = false" ng-show="data.showDelete">Cancel</a>
+
+                      <a class="button icon-left ion-plus-round  button-positive" style="font-size:18px !important; position: absolute; top: 5px; right: 5px;" href="#/dash_material_add/{{activityId}}">Add</a>
+
+                      &nbsp;                    
+                  </div> -->
+                      
+                  <div class="spacer" style="height: 3px;"></div>
+                  
+                  <ion-list show-delete="data.showDelete">
+
+                      <!--div class="item item-divider item-button-right" style="height: 40px;">                          
+                          <a class="button ion-trash-b button-clear button-assertive button-small" ng-click='removeMaterials()' style="font-size:28px !important; position: absolute; top: 2px; right: 5px;"></a>
+
+                          <a class="button ion-android-create button-clear button-dark button-small" 
+                          href="#/main/dash_material_edit/{{activityId}}"
+                          style="font-size:28px !important; position: absolute; top: 2px; right: 50px;"></a>
+                      </div--> 
+                      
+                      <ion-item class="item item-thumbnail-left item-icon-right" ng-repeat="item in materials" href="#/dash_material_edit/{{activityId}}" >
+
+                          <img ng-src="{{item.image}}" >
+                          <h2>Type: {{item.code}}</h2>
+                          <p>Range: {{item.category}}</p>
+                          <p>Product: {{item.product}}</p> 
+                          <p>Price $: {{item.price}}</p>
+                          <p>Quantity: {{item.qttyRequest}}</p>
+                          <p>Reason main: {{item.reasonCode}}</p>
+                          <!--label class="checkbox" style="position: absolute; top: 6px; right: 6px;">
+                              <input type="checkbox" ng-model="item.checked" ng-checked="item.checked" >
+                          </label--> 
+
+                          <ion-delete-button class="ion-minus-circled" 
+                                     ng-click="onItemDelete(item)">
+                          </ion-delete-button>
+
+                          <span class="item-note">
+                              <i class="icon ion-chevron-right"></i>
+                          </span>
+
+                      </ion-item>
+                  </ion-list>
+                  <div class="spacer" style="height: 45px;"></div>
+              </ion-content>
+          </ion-tab>
+
+          <ion-tab title="Stock Items">
+            
+            <!--a class="button btn btn-right light" href="#/dash_product_add/{{activityId}}">
+              <i class="ion-plus"></i>
+            </a-->
+
+            <ion-content class="has-header">
+                
+                  <div class="spacer" style="height: 89px;"></div>
+
+                  <!--<div class="item item-button-right item-divider " style="height: 55px;">
+                                        
+                      <a class="button ion-plus-round button-clear button-dark " ng-click='clearCanvas()' style="font-size:34px !important; position: absolute; top: 1px; right: 45px;"></a>
+
+                      <a class="button ion-trash-b button-clear button-dark " ng-click='clearCanvas()' style="font-size:34px !important; position: absolute; top: 1px; right: 5px;"></a>
+                      <a class="button icon-left ion-trash-b button-dark" style="font-size:18px !important; position: absolute; top: 5px; right: 93px;" ng-click="data.showDeleteItem = true" ng-show="!data.showDeleteItem">Delete</a>
+
+                      <a class="button icon-left ion-android-close button-dark" style="font-size:18px !important; position: absolute; top: 5px; right: 93px;" ng-click="data.showDeleteItem = false" ng-show="data.showDeleteItem">Cancel</a>
+
+                      <a class="button icon-left ion-plus-round  button-positive" style="font-size:18px !important; position: absolute; top: 5px; right: 5px;" href="#/dash_product_add/{{activityId}}">Add</a>
+
+                      &nbsp;                    
+                  </div>-->
+                  <ion-list show-delete="data.showDelete">                     
+                   
+                    <!--div class="item item-divider item-button-right" style="height: 40px;">
+                        
+                        <a class="button ion-trash-b button-clear button-assertive button-small" ng-click='removeItems()' style="font-size:28px !important; position: absolute; top: 2px; right: 5px;"></a>
+
+                        <a class="button ion-android-create button-clear button-dark button-small" 
+                        href="#/main/dash_product_edit/{{activityId}}"
+                        style="font-size:28px !important; position: absolute; top: 2px; right: 50px;"></a>
+                    </div--> 
+
+                     <ion-item class="item item-thumbnail-left item-icon-right" ng-repeat="item in stockItems" href="#/dash_product_edit/{{activityId}}" >
+                        <img ng-src="{{item.image}}">
+                        <h2>Code: {{item.code}}</h2>
+                        <p>Category: {{item.category}}</p>
+                        <p>Product: {{item.product}}</p> 
+                        <p>Price $: {{item.price}}</p>
+                        <p>Quantity: {{item.qttyRequest}}</p>
+                        <p>Reason main: {{item.reasonCode}}</p>
+                        <!--label class="checkbox" style="position: absolute; top: 6px; right: 6px;">
+                            <input type="checkbox" ng-model="item.checked" ng-checked="item.checked" >
+                        </label-->                           
+                        <ion-delete-button class="ion-minus-circled" 
+                                     ng-click="onItemDeleteItem(item)">
+                        </ion-delete-button>
+
+                        <span class="item-note">
+                              <i class="icon ion-chevron-right"></i>
+                        </span>
+
+                    </ion-item>
+                  </ion-list>
+                <div class="spacer" style="height: 45px;"></div>
+            </ion-content>
+          </ion-tab>
+   
+        </ion-tabs>
+      </div>
+  
+    <!--<div ng-include src="'templates/notifications.html'"></div>-->
+</ion-view>

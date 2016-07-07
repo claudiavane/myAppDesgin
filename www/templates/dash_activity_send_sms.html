@@ -1,0 +1,51 @@
+<ion-view view-title="Send Arrival Sms" name="send-sms" >
+    <ion-nav-buttons side="right">
+    
+        <!--a class="button ion-close button-clear" href="#" ng-click="cancel()" style="font-size:22px !important; color: #FFF;"></a>&nbsp;&nbsp;&nbsp;
+
+        <a class="button ion-checkmark button-clear" href="#" ng-click="save()" style="font-size:22px !important; color: #FFF;">               
+        </a>&nbsp;&nbsp;-->
+        <a class="button icon-left ion-android-close button-clear button-assertive" style="color:#fff" ng-click="cancel()">Cancel</a>&nbsp;&nbsp;&nbsp;
+        <a class="button icon-left ion-android-done button-clear button-assertive" style="color:#fff" ng-click="save()">Send Sms</a>&nbsp;
+        
+    </ion-nav-buttons>
+
+    <ion-content class="padding">
+
+        <div class="row responsive-md">
+            <div class="col col-33">
+                <h4>Information of the Next Call Out Visit </h4>
+                <div class="item item-avatar item-divider">
+                  <img src="img/serviceman/person.png">
+                  <h2>Contact Name: Jhon Smith</h2>
+                  <p>Mobile: +591 707 101234</p>
+                  <p>Email: smith@mj.com</p>
+                </div>
+                <div class="spacer" style="height: 30px;"></div> 
+                <h4>Approximate Time to arrive the Next Service Call-Out Visit</h4>
+                <div class="item item-icon-left" >
+                      
+                    <i class="icon ion-android-time assertive" ></i>
+                    <span >Arrival time:</span>
+                    <input type="number" value="20" style="position: absolute; top: 10px; right: 80px;  width:8.5em;
+        padding:2px;
+        margin:0;
+        border:1px solid #ddd;
+        border-radius:5px;
+        text-align:center;"></input>
+                    <span style="position: absolute; top: 15px; right: 30px;">Min.</span>
+                </div>
+            </div>
+            <div class="col col-67">
+                
+                <div id="map4" data-tap-disabled="true"></div>
+            </div>
+        </div>
+
+                
+        
+    </ion-content>
+    
+    <!--<div ng-include src="'templates/notifications.html'"></div>-->
+        
+</ion-view>

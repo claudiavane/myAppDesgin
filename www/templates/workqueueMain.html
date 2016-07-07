@@ -1,0 +1,54 @@
+<ion-view view-title="Work Queue">
+        <ion-nav-buttons side="left">
+          <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>        
+        </ion-nav-buttons>
+        <ion-content>
+               
+          <div class="item item-input-inset " >
+                  
+              <label class="item-input-wrapper">
+                  <i class="icon ion-android-search placeholder-icon"></i>
+                  <input type="text" ng-model="searchQuery" placeholder="Search Items" ></input>
+              </label>            
+              
+              <button class="button icon-left button-stable" ng-click="searchQuery=undefined;">
+                <i class="icon zmdi zmdi-refresh-alt"></i>
+                  Clear
+              </button>
+            
+              <button class="button icon-left button-dark" ng-click="openFilter()">
+                <i class="icon zmdi zmdi-filter-list"></i>
+                 Filters
+              </button>
+
+              <!--a class="button icon-left ion-ios-grid-view button-dark button-small" style="font-size:18px !important; position: absolute; top: 5px; right: 93px;" ng-click="data.showDelete = true" >Filters</a>
+
+              <a class="button icon-left ion-ios-grid-view-outline button-stable button-small" style="font-size:18px !important; position: absolute; top: 5px; right: 5px;">Clear</a-->                   
+          </div>
+          
+          <ion-list>                
+            <ion-item class="item item-text-wrap " ng-repeat="item in activities | filter:searchQuery" ng-click="showActionsheet(item)">
+                     
+                <p ng-if="item.activity.type === 'SERCALL'"><span style="color: #282828; font-size:17px" >{{item.activity.serviceCallOutId}}  - Service Call-Out Visit</span></p>
+
+                <p ng-if="item.activity.type !== 'SERCALL'"><span style="color: #282828; font-size:17px" >{{item.activity.serviceCallOutId}}  - {{item.activity.type}}</span></p>
+
+                <p>Details: <span style="color: #282828; font-size:17px">{{item.activity.details}}</span></p>
+                <p>Created Date: <span style="color: #282828; font-size:17px">{{item.activity.createdDate | date:'dd-MM-yyyy'}}</span></p>
+                <p>Updated Date: <span style="color: #282828; font-size:17px">{{item.activity.updatedDate | date:'dd-MM-yyyy'}}</span></p>
+                
+                <div class="card-footer">
+                  <i class="icon ion-ios-information dark" style="font-size:22px !important;"></i> Status: <span style="border-radius: 70px; background-color: #F8F8F8; color: #282828; font-weight: bold;">{{item.activity.status}}</span>
+                  <!--a class="button button-icon icon ion-ios-information">{{item.activity.status}}</a--> 
+                  <!--a class="button icon-left ion-ios-information button-clear button-dark" style="position: relative; top: 8px; left: -5px;" ng-click="openStatus()">{{item.activity.status}}</a-->
+                  <!--a class="button icon-left ion-ios-redo button-clear button-positive">Go to product</a-->
+                </div>
+
+                <span class="item-note">
+                  <i class="icon ion-chevron-right" style="font-size:22px !important; position: absolute; top: 60px; right: 25px;"></i>
+                </span>                  
+            </ion-item>
+          </ion-list>
+          <div class="spacer" style="height: 45px;"></div>                
+        </ion-content>
+</ion-view>

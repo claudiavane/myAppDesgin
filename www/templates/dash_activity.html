@@ -1,0 +1,168 @@
+<ion-view view-title="Call Out Visit" name="home-address-view" cache-view="false" >
+
+    <!--ion-nav-bar class="bar bar-assertive">
+          <ion-nav-back-button class="button-icon button-clear">
+            <span class="icon ion-android-arrow-back"></span>
+          </ion-nav-back-button>
+        </ion-nav-bar-->
+    <!--ion-nav-buttons side="left">
+       
+      <a class="button ion-android-arrow-back button-clear" ui-sref="workqueue.workqueueMain" style="font-size:22px !important; color: #FFF;" ng-disabled="isStarted">
+      </a>
+
+    </ion-nav-buttons-->
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+
+    <ion-nav-buttons side="right">
+      
+      <a class="button ion-merge button-clear" href="#/dash_activity_material_stock_split/{{callVisit.activity.serviceCallOutId}}" style="font-size:22px !important; color: #FFF;">        
+      </a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <!--a class="button ion-ios-redo button-clear" ng-click="openPopover1($event)" style="font-size:22px !important; color: #FFF;" ng-disabled="isStarted">
+      </a>&nbsp;&nbsp;-->
+
+      <a class="button button-icon ion-android-more-vertical button-clear" ng-click="popover_options.show($event)" style="font-size:22px !important; color: #FFF; width:32px;">
+      </a>
+  
+    </ion-nav-buttons>
+
+    <script id="options_activity.html" type="text/ng-template">
+      <ion-popover-view>
+        
+        <ion-content>
+          <div class="list">
+              <a class="item icon-left ion-ios-checkmark-outline" ng-click="startActivity()" >
+                Start Visit             
+              </a>
+              <a class="item icon-left ion-ios-clock-outline" ng-click="rescheduleToday()" >
+                Reschedule this Visit Today
+              </a>
+              <a class="item icon-left ion-ios-refresh-outline" ng-click="addComment()">
+                Rescheduling of this Visit for another day
+              </a>            
+              <a class="item icon-left ion-ios-close-outline" ng-click="addComment1()" >
+                Cannot attend this Visit
+              </a>   
+              <a class="item icon-left ion-ios-checkmark" ng-click="endActivity()" >
+                End Visit       
+              </a>        
+          </div>
+
+        </ion-content>
+      </ion-popover-view>
+    </script>
+    
+    <ion-content class="padding has footer">
+        <div class="list ">
+            
+            <div class="item item-text-wrap item-icon-left " >
+                  <i class="icon ion-android-home" style="font-size:20px !important;"></i>
+                  <h2 >
+                    Call out visit: {{callVisit.activity.serviceCallOutId}}</h2>
+                    <p>Duration Time: 40 min</p>
+                    <p>Scheduled: {{callVisit.hr}}</p>                  
+                  <!--span class="item-note" style="position: absolute; top: 50px; right: 15px;">{{callVisit.hr}}</span-->
+            </div>
+            <div class="item item-text-wrap item-stable item-icon-left" >
+                  <i class="icon ion-flag" style="font-size:20px !important;"></i>
+                  <span >Payment Status: </span>
+                  <span class="badge badge-stable">{{callVisit.activity.paymentStatus}}</span>
+            </div>
+
+            <div class="item item-text-wrap item-stable item-icon-left" >
+                  <i class="icon ion-alert-circled" style="font-size:20px !important;"></i>
+                  <span >Fitting is in Warranty? </span>
+                  <span ng-show = '{{callVisit.activity.inWarranty}}' class="badge badge-stable">Yes</span>
+                  <span ng-show = '{{!callVisit.activity.inWarranty}}' class="badge badge-stable">No</span>
+
+            </div>
+
+            <div class="item item-text-wrap item-stable item-icon-left">
+              <i class="icon ion-person" style="font-size:20px !important;"></i>
+                  <p>Contact Name</p>
+                  <h2>{{callVisit.activity.contactName}}</h2> 
+            </div>
+            
+            
+            <!--a class="button icon-left ion-android-time button-dark button-full" ng-click="startActivity()" ng-hide="isStarted || callVisit.activity.status == 'Finalized'">
+                <span style="position: absolute; left: 50px;">Start Visit</span>
+                <span class="item-note">{{callVisit.activity.status}}</span>
+            </a-->
+
+            <!--a class="item item-divider item-icon-left" href="#" ng-click="startActivity()" ng-hide="isStarted">
+                  <i class="icon ion-android-time" style="font-size:20px !important;"></i>
+                  <span >Start Visit</span>
+                  <span class="item-note">
+                    {{callVisit.activity.status}}</span>
+            </a-->
+
+            <!--a class="button icon-left ion-android-time button-dark button-outline button-full" href="#/dash_activity_end/{{callVisit.activity.serviceCallOutId}}"  ng-hide="!isStarted || callVisit.activity.status == 'Finalized'">
+                  <span style="position: absolute; left: 50px;">End Visit</span>
+                  <span class="item-note">
+                    {{callVisit.activity.status}}</span>
+            </a-->
+
+            <div class="item item-text-wrap item-icon-left" ng-show="callVisit.activity.status == 'Finalized'">
+                  <i class="icon ion-flag" style="font-size:20px !important;"></i>
+                  <span >Visit Status: </span>
+                  <span class="item-note">{{callVisit.activity.status}}</span>
+            </div>
+            
+            <a class="button icon-left ion-social-buffer button-positive button-full button-outline" href="#/dash_activity_material_stock/{{callVisit.activity.serviceCallOutId}}">
+              <span style="position: absolute; left: 50px;">Materials/Stock Items</span>
+              <span class="item-note">
+                  <i class="icon ion-chevron-right" ></i>
+                </span>
+            </a>
+
+            <!--a class="item item-divider item-icon-left" href="#/main/dash_activity_material_stock/{{callVisit.activity.serviceCallOutId}}">
+              <i class="icon ion-social-buffer" style="font-size:20px !important;"></i>
+              <span >Materials/Stock Items</span>
+              <span class="item-note"></span>
+            </a-->
+
+            <a class="button icon-left ion-compose button-positive button-full button-outline" href="#/dash_activity_comment/{{callVisit.activity.serviceCallOutId}}">
+                <span style="position: absolute; left: 50px;">Comments</span>
+                <span class="item-note">
+                  <i class="icon ion-chevron-right" ></i>
+                </span>
+            </a>
+           
+            <!--div class="item item-text-wrap item-icon-left" >
+                <i class="icon ion-location" style="font-size:20px !important;"></i>
+                <span >Property Address</span>
+            </div> 
+            
+            <div id="mapVisit" data-tap-disabled="true"></div>
+            
+            
+            <div class="item item-text-wrap">
+                    <p>Address</p>
+                    <h2>{{callVisit.activity.address}}</h2>
+                    <br/>
+                    <p>Builder</p>
+                    <h2>{{callVisit.activity.builder}}</h2>
+                    <br/>
+                    <p>Builder Address</p>
+                    <h2>{{callVisit.activity.builderAddress}}</h2>
+                    <br/>
+                    <p>House type</p>
+                    <h2>{{callVisit.activity.houseType}}</h2>
+                    <br/>
+                    <p>Fitting is in Warranty?</p>
+                    <h2 ng-show = '{{callVisit.activity.inWarranty}}'>Yes</h2>                    
+                    <h2 ng-show = '{{!callVisit.activity.inWarranty}}'>No</h2>
+            </div-->
+
+            
+
+            
+
+        </div>
+
+        
+    </ion-content>
+
+  
+      <!--<div ng-include src="'templates/notifications.html'"></div>-->
+</ion-view>

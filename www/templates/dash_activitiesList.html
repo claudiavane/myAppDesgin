@@ -1,0 +1,84 @@
+<ion-view view-title="Call Out Visits" cache-view="false" name="create-request-view">
+    
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>        
+    </ion-nav-buttons>
+    
+    <ion-nav-buttons side="right">
+
+        <a class="button ion-map button-clear" href="#/main/dash" style="font-size:22px !important; color: #FFF; width:32px;">
+        </a>
+
+        <a class="button button-icon ion-android-more-vertical button-clear" ng-click="popover.show($event)" style="font-size:22px !important; color: #FFF; width:32px;">
+        </a>
+
+    </ion-nav-buttons>
+
+    <ion-content class="padding">
+        <ion-list>
+            <div class="item item-avatar">
+                <img src="img/logo1.png">
+                <h2>March 05, 2016</h2>
+                <p>{{activities.length}} Call Out Visits</p>
+            </div>
+
+            <a class="button icon-left ion-android-time button-positive button-outline button-full" href="#" ng-click="startDay()" ng-hide="isStarted || isNotWork">
+                <span style="position: absolute; left: 45px;">Start Day</span>
+                <span class="item-note">{{subtitle}}</span>
+            </a>
+            <!--a class="item item-divider item-icon-left" href="#" ng-click="startDay()" ng-hide="isStarted || isNotWork" >
+                <i class="icon ion-android-time" style="font-size:20px !important;"></i>
+                <span>Start Day</span>
+                <span class="item-note">{{subtitle}}</span>
+          </a-->
+            <a class="button icon-left ion-android-time button-positive button-outline button-full" href="#" ng-click="endDayOpenModal()" ng-hide="!isStarted || isNotWork">
+                <span style="position: absolute; left: 45px;">End Day</span>
+                <span class="item-note">{{subtitle}}</span>
+            </a>
+            <!--a class="item item-divider item-icon-left" href="#" ng-click="endDayOpenModal()" ng-hide="!isStarted || isNotWork">
+                <i class="icon ion-android-time" style="font-size:20px !important;"></i>
+                <span>End Day</span>
+                <span class="item-note">{{subtitle}}</span>
+          </a-->
+        </ion-list>
+        <ion-toggle ng-model="data.showReorder" toggle-class="toggle-balanced">Edit order</ion-toggle>
+        <ion-list show-reorder="data.showReorder" can-swipe="false">
+            <ion-item ng-repeat="item in activities" item="item" class="item-remove-animate item item-icon-right" type="item-text-wrap" href="#" ng-click="goActivity(item)" ng-show="item.activity.type!='HOME'">
+
+                <h2 style="position: relative; top: 5px; right: 8px; font-weight: 500;">{{item.hr}}</h2>
+                <p ng-show="item.activity.serviceCallOutId != null" style="position: absolute; top: 10px; left: 64px; ">{{item.activity.type=='SERCALL'?'Service Call-Out Visit':''}}{{item.activity.type=='DEPOT'?'Depot':''}}: {{item.activity.serviceCallOutId}}
+                    <br> Address: {{item.activity.address}}
+                    <br>
+                </p>
+
+                <ion-reorder-button class="ion-ios-drag button-clear" on-reorder="moveItem(item, $fromIndex, $toIndex)" style="width:32px;top:4px;">
+                </ion-reorder-button>
+
+            </ion-item>
+        </ion-list>
+        <div class="spacer" style="height: 45px;"></div>
+    </ion-content>
+    <!--<div ng-include src="'templates/notifications.html'"></div>-->
+</ion-view>
+
+
+<script id="popover_schedule.html" type="text/ng-template">
+    <ion-popover-view>
+        <ion-content>
+            <div class="list">
+                <a class="item icon-left ion-plus-round" ng-click="depotOpenModal()">&nbsp;
+              Add Depot Visit
+            </a>
+                <a class="item icon-left ion-ios-clock" href="#">&nbsp;
+              Show All Service Call-Out Visits
+            </a>
+                <a class="item icon-left ion-ios-clock-outline" href="#">&nbsp;
+              Show Scheduled Service Call-Out Visits
+            </a>
+                <a class="item icon-left ion-pinpoint" href="#">&nbsp;
+              Show Unscheduled Service Call-Out Visits
+            </a>
+            </div>
+        </ion-content>
+    </ion-popover-view>
+</script>

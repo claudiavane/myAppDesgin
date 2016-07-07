@@ -1,0 +1,55 @@
+<ion-modal-view class="endModal">
+  <ion-header-bar align-title="center" class="bar nav-bar" >
+
+      <h4 class="title" style="color: #fff;">End Work</h4>
+
+      <div class="buttons">
+        <a class="button ion-close button-clear" href="#" ng-click="closeEndDay()" style="font-size:22px !important; color: #FFF;">        
+        </a>&nbsp;&nbsp;&nbsp;
+      </div>
+  </ion-header-bar>
+
+
+  <ion-content class="padding" >
+    
+      
+      <div class="list">
+          <!--<div class="item item-icon-left" >              
+                <i class="icon ion-android-time dark" ></i>
+                Work started at <span class="badge badge-stable"> {{hour}} : {{min}}</span>
+          </div>-->
+          <div class="item item-icon-left" >              
+                <i class="icon ion-android-stopwatch dark" ></i>
+                End Work at <span class="badge badge-dark"> {{endHour}} : {{endMin}}</span>
+          </div>
+          <div class="spacer" style="height: 5px;"></div> 
+
+        <div class="item item-divider" >
+          Uncompleted Services Call-Out Visits 
+        </div>
+  
+         <div class="item" ng-repeat="item in properties" >
+            <h2>{{item.name}}</h2>
+            
+            <div class="card-footer">
+              <i class="icon ion-ios-close assertive"></i> Not completed
+            </div>
+            <span class="badge badge-stable">{{item.endTime}}</span>
+            
+        </div>
+      </div>
+      <div class="spacer" style="height: 40px;"></div> 
+  </ion-content>
+
+  <div class="bar bar-footer item-button-right" style="height:50px;">
+       <div class="buttons " >
+            <!--<a class="button button-stable icon-left ion-close-round" ng-click="closeEndDay()"> Cancel</a>
+            <a class="button button-dark icon-left ion-checkmark-round" ng-click="endDay()" > End Work </a>-->
+            
+            <a class="button button-dark" ng-click="closeEndDay()">Cancel</a>
+            <a class="button button-assertive " ng-click="endDay()">End Work</a>
+
+       </div>  
+  </div>
+
+</ion-modal-view>

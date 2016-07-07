@@ -1,0 +1,39 @@
+<ion-view view-title="Account" name="login-forgotten" hide-nav-bar="true" class="login-bg" cache-view="false">
+
+    <ion-content class="padding">
+
+        <div style="display: flex;align-items: center;align-content: center;height: 100%;">
+            <div class="login-box">
+                <div class="col text-center login-logo">
+                    <img src="img/logo.png" width="100%">
+                    <h2 class="dark" style="margin:10px 0 0 0">Account Details</h2>
+                </div>
+                <div class="list">
+                    <ion-md-input placeholder="Name" highlight-color="assertive" type="text" ng-model="data.username" style="border-width: 0px 0px 1px 0px; padding-left:5px !important;"></ion-md-input>
+
+                    <ion-md-input placeholder="E-mail Address" highlight-color="assertive" type="text" ng-model="data.email" style="border-width: 0px 0px 1px 0px; padding-left:5px !important;"></ion-md-input>
+
+                    <ion-md-input placeholder="Phone Number" highlight-color="assertive" type="text" ng-model="data.phone" style="border-width: 0px 0px 1px 0px; padding-left:5px !important;"></ion-md-input>
+                    <br>
+
+                    <label class="item item-input item-select" ng-hide='isEdit' style="border-width: 0px 0px 1px 0px; padding-left:5px !important; background: inherit;">
+                        <div class="input-label" style="opacity: 0.5;padding:6px 0px 0px 0px;">
+                            Department
+                        </div>
+                        <select ng-model="typeSelected.description" style="background-color: inherit;">
+                            <option ng-repeat="each in departments" value="{{each.description}}">
+                                {{each.description}}
+                            </option>
+                        </select>
+                    </label>
+                    <br>
+                    <button class="button button-block " style="color: #FFF; background: rgb(217,35,15); " ng-click="back()">Notify Administrator</button>
+                    <button class="button button-block button-dark " ng-click="back()">Back</button>
+                </div>
+
+            </div>
+
+        </div>
+    </ion-content>
+
+</ion-view>

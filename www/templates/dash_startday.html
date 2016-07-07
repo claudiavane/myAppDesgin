@@ -1,0 +1,29 @@
+<ion-modal-view class="startModal">
+  <ion-header-bar align-title="center" class="bar nav-bar" >
+
+      <h4 class="title" style="color: #fff;">Start Work</h4>
+
+      <div class="buttons">
+        <a class="button ion-close button-clear" href="#" ng-click="closeStartDay()" style="font-size:22px !important; color: #FFF;">        
+        </a>&nbsp;&nbsp;&nbsp;
+      </div>
+
+  </ion-header-bar>
+
+  <ion-content class="padding">
+      <div class="list">
+          <div class="item item-icon-left" >              
+                <i class="icon ion-android-time dark" ></i>
+                Start Work at <span class="badge badge-dark"> {{hour}} : {{min}}</span>                                
+          </div>
+      </div>
+  </ion-content>
+  <div class="bar bar-footer item-button-right" style="height:50px;">
+       <div class="buttons" >
+            <a class="button button-dark" ng-click="closeStartDay()">Cancel</a>
+            <a class="button button-dark" ng-click="noWorkToday()">Not Working Today</a>
+            <a class="button button-assertive " ng-click="startDay()">Start Work</a>
+       </div>  
+  </div>
+
+</ion-modal-view>

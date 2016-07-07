@@ -1,0 +1,59 @@
+<ion-view view-title="Work Queue">
+        <ion-nav-buttons side="left">
+          <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>        
+        </ion-nav-buttons>
+        <ion-content>
+               
+          <div class="item item-input-inset " >
+                  
+              <label class="item-input-wrapper">
+                  <i class="icon ion-android-search placeholder-icon"></i>
+                  <input type="text" ng-model="searchQuery" placeholder="Search Products" ></input>
+              </label>            
+
+              <button class="button icon-left button-stable" ng-click="searchQuery=undefined;">
+                <i class="icon zmdi zmdi-refresh-alt"></i>
+                  Clear
+              </button>
+            
+              <button class="button icon-left button-dark" ng-click="openFilter()">
+                <i class="icon zmdi zmdi-filter-list"></i>
+                 Filters
+              </button>
+
+              <!--a class="button icon-left ion-ios-grid-view button-dark button-small" style="font-size:18px !important; position: absolute; top: 5px; right: 93px;" ng-click="data.showDelete = true" >Filters</a>
+
+              <a class="button icon-left ion-ios-grid-view-outline button-stable button-small" style="font-size:18px !important; position: absolute; top: 5px; right: 5px;">Clear</a-->                   
+          </div>
+          
+          <ion-list>                
+            <ion-item class="item item-thumbnail-left"  ng-repeat="item in products | filter:searchQuery" ng-click="showActionsheet(item)">
+                <img ng-src="{{item.image}}">     
+
+                <p ng-show="user.id == 2">Serviceman: <span style="color: #282828; font-size:17px; font-weight: bold;">{{item.createdBy}}</span></p>
+                <p>Category/Product: <span style="color: #282828; font-size:17px">{{item.category}}</span></p>
+                <p>Code/Range: <span style="color: #282828; font-size:17px">{{item.range}}</span></p>
+                <p>Description: <span style="color: #282828; font-size:17px">{{item.product}}</span></p>                
+                <div class="card-footer">
+                  <i class="icon ion-ios-information dark" style="font-size:22px !important;"></i> Status: <span style="border-radius: 70px; background-color: #F8F8F8; color: #282828; font-weight: bold;">{{item.status}}</span>                   
+                </div>
+                
+                <p>Created Date: <span style="color: #282828; font-size:17px">{{item.createdDate | date:'dd-MM-yyyy'}}</span></p>
+                <p>Updated Date: <span style="color: #282828; font-size:17px">{{item.updatedDate | date:'dd-MM-yyyy'}}</span></p>
+                <p>Weight: <span style="color: #282828; font-size:17px">{{item.width}}</span></p>
+                <p>Height: <span style="color: #282828; font-size:17px">{{item.height}}</span></p>
+                <p>Quantity: <span style="color: #282828; font-size:17px">{{item.qttyRequest}}</span></p>
+                <p>Price: <span style="color: #282828; font-size:17px">{{item.price}}</span></p>
+                <p>Comments <span style="color: #282828; font-size:17px">{{item.serviceRepComments}}</span></p>
+                <p>Problem: <span style="color: #282828; font-size:17px">{{item.problemCode}}</span>
+                </p>
+
+                <span class="item-note">
+                  <i class="icon ion-chevron-right" style="font-size:22px !important; position: absolute; top: 130px; right: 25px;"></i>
+                </span>
+                
+            </ion-item>
+          </ion-list>
+          <div class="spacer" style="height: 45px;"></div>                
+        </ion-content>
+</ion-view>

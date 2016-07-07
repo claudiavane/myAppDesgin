@@ -1,0 +1,40 @@
+<ion-view view-title="Materials of the Service Call Out" cache-view="false" name="create-request-view" cache-view="true">
+    <ion-nav-buttons side="right">
+      <!--button class="button button-icon button-clear ion-ios-close-empty" ng-click="cancel()"></button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="button button-icon button-clear ion-ios-checkmark-outline" ng-click="goRequestStockSelected()" ></button-->
+      
+      <a class="button " href="#" ng-click="removeItems()">
+        <i class="icon ion-trash-b" style="font-size:22px !important; color: #FFF;"></i>
+      </a>&nbsp;&nbsp;&nbsp;
+      <a class="button " href="#/main/dash_material_edit/{{activityId}}">
+        <i class="icon ion-edit" style="font-size:22px !important; color: #FFF;"></i>
+      </a>&nbsp;&nbsp;&nbsp;
+
+    </ion-nav-buttons>
+    <a class="button btn btn-right light" href="#/main/dash_material_add/{{activityId}}"><i class="ion-plus"></i></a>
+    <ion-content class="padding">
+        <!--<div class="spacer" style="height: 10px;"></div>-->
+        <div class="item item-input-inset" >
+            <label class="item-input-wrapper">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" ng-model="searchQuery" placeholder="Search Material"></input>
+            </label>            
+        </div>
+        <div class="list">           
+            <div class="item item-thumbnail-left  item-remove-animate item-icon-right" ng-repeat="item in materials | filter:searchQuery" href="#" >
+                <img ng-src="{{item.image}}">
+                <h2>Type: {{item.code}}</h2>
+                <p>Range: {{item.category}}</p>
+                <p>Product: {{item.product}}</p> 
+                <p>Price $: {{item.price}}</p>
+                <p>Quantity: {{item.qttyRequest}}</p>
+                
+                <label class="checkbox" style="position: absolute; top: 6px; right: 6px;">
+                    <input type="checkbox" ng-model="item.checked" ng-checked="item.checked" >
+                </label>                
+            </div>
+        </div>
+        <div class="spacer" style="height: 10px;"></div>        
+    </ion-content>
+    <!--<div ng-include src="'templates/notifications.html'"></div>-->
+</ion-view>

@@ -1,0 +1,72 @@
+<ion-view view-title="Edit Overnight Location" name="overnight-edit-view" cache-view="false">
+        
+        <ion-nav-title >
+            <span ng-show="isEdit">Edit Overnight Location</span>
+            <span ng-show="!isEdit">Add Overnight Location</span>
+        </ion-nav-title>
+    
+        <ion-nav-buttons side="right">
+           <a class="button ion-close button-clear" ui-sref="settings.settingsLocations" style="font-size:20px !important; color: #FFF;"> Cancel        
+            </a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <a class="button ion-checkmark button-clear" ng-click="save()" style="font-size:20px !important; color: #FFF;"> Save               
+            </a>&nbsp;&nbsp;&nbsp;
+
+        </ion-nav-buttons>
+        <ion-content class="padding">
+            
+                <div class="row responsive-md">
+                  <div class="col col-33">
+                      
+                        <div class="list">                          
+                            <div class="item item-divider item-icon-right">
+                              <i class="icon ion-home dark" ></i>
+                              Address
+                            </div>
+                            <label class="item item-input item-stacked-label">
+                                <span class="input-label">Address</span>
+                                <input type="text" id="add1" ng-model="overnightLocation.address" >
+                            </label>
+
+                            <label class="item item-input item-stacked-label">
+                                <span class="input-label">Latitude</span>
+                                <input type="text" id="add4" ng-model="overnightLocation.lat" >
+                            </label>
+
+                            <label class="item item-input item-stacked-label">
+                                <span class="input-label">Longitude</span>
+                                <input type="text" id="add4" ng-model="overnightLocation.lng" >
+                            </label>
+
+                            <div class="item item-divider item-icon-right">
+                              <i class="icon ion-ios-calendar-outline dark" ></i>
+                              Overnight Dates
+                            </div>
+
+                            <label class="item item-input item-stacked-label">
+                                <span class="input-label">Date From</span>
+                                <input type="date" id="add2" ng-model="overnightLocation.dateFrom" >
+                            </label>
+
+                            <label class="item item-input item-stacked-label">
+                                <span class="input-label">Date To</span>
+                                <input type="date" id="add2" ng-model="overnightLocation.dateTo" >
+                            </label>
+
+                            
+
+                            
+                        </div>
+                      <div class="spacer" style="height: 40px;"></div>
+                  </div>
+
+                  <div class="col col-67">
+                      <div id="mapOvernightEdit" data-tap-disabled="true"></div>
+                  </div>
+              </div>
+            <div class="spacer" style="height: 45px;"></div>
+        </ion-content>
+          
+        <!--<div ng-include src="'templates/notifications.html'"></div>-->
+
+</ion-view>

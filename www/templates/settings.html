@@ -1,0 +1,145 @@
+<ion-view view-title="Settings" name="create-request-view" cache-view="false">
+
+    <!--ion-content class="padding">         
+       <div class="list ">
+            <div class="item item-divider">
+              General
+            </div>
+            <a href="#/main/settingsAddress" class="item item-icon-left">
+              <i class="icon ion-home"></i>
+              Home Address
+            </a>
+            <a href="#/main/settingsLocations" class="item item-icon-left">
+              <i class="icon ion-location"></i>
+              Overnight Locations
+            </a>
+            
+            <a href="#" class="item item-icon-left">
+              <i class="icon ion-flag"></i>
+              <p>Current Depot</p>
+              <h2>Depot 123</h2>
+            </a>
+            <a href="#" class="item item-icon-left">
+              <i class="icon ion-android-notifications"></i>
+              Notifications
+            </a>
+       </div>
+
+    </ion-content-->
+    
+     <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>        
+    </ion-nav-buttons>
+
+    <ion-tabs class="tabs-stable ">
+
+          <!--ion-tab title="Home Address" >
+            <ion-nav-view>
+              <ion-view>            
+                <ion-content class="has-header">
+                    
+                    <div class="row responsive-md">
+                          <div class="col col-33">
+                              
+                              <h4>Serviceman Home Address</h4>
+                              <div class="list card">
+                              
+                                <a class="item item-avatar item-divider item-icon-right" href="#/main/settingsAddressEdit/{{servicemanData.address.addressId}}">
+                                   <img src="img/serviceman/person.png">
+                                    
+                                    <h2>Address</h2>
+                                    <p>{{servicemanData.address.addressLine1}}</p>
+                                    <p>{{servicemanData.address.addressLine2}}</p>
+                                    <p>{{servicemanData.address.addressLine3}}</p>
+                                    <p>{{servicemanData.address.addressLine4}}</p>
+                                    <br/>
+                                    <h2>Country</h2>
+                                    <p>{{servicemanData.address.country}}</p>
+
+
+                                    <br/>
+                                    <h2>Mobile</h2>
+                                    <p>{{servicemanData.mobile}}</p> 
+                                    <span class="item-note">
+                                      <i class="icon ion-chevron-right"></i>
+                                    </span> 
+
+                                </a> 
+                                
+                                <div class="item item-icon-left " >
+                                  <i class="icon ion-flag positive"></i>
+                                  <span>Current Depot: Depot ABC</span>
+                                </div>
+                         
+                              </div>
+                            </div>
+                            <div class="col col-67">
+
+                              <div data-tap-disabled="true">
+                                  <div id="mapHomeAddress"></div>
+                              </div>
+
+                            </div>
+                        </div>
+                    <div class="spacer" style="height: 45px;"></div>
+                </ion-content>
+              </ion-view>
+            </ion-nav-view>
+          </ion-tab>
+
+          <ion-tab title="Overnight Locations" >    
+            <ion-nav-view>
+              <ion-view>                
+              <ion-content class="has-header">
+
+                  <div class="row responsive-md">
+                      <div class="col col-33">
+                          
+                          <h4>Serviceman Home Address</h4>
+
+                           <div class="spacer" style="height: 90px;"></div>
+                           <ion-list>
+                              
+                              <ion-item class="item-remove-animate" ng-repeat="item in overnightLocations | filter:searchQuery | customOrderBy "  type="item-text-wrap" href="#/main/settingsLocationsMap/{{item.addressId}}">
+                                       
+                                      <h2><i class="icon ion-location"></i>  {{item.address}}</h2><br/>
+                                      <p>Date From: {{item.dateFrom | date:'dd-MM-yyyy'}}</p>
+                                      <p>Date To: {{item.dateTo | date:'dd-MM-yyyy'}}</p>
+                                      <p>GPS X Cord: {{item.lat}}</p>
+                                      <p>GPS Y cord: {{item.lng}}</p>
+                                  
+                              </ion-item>
+                          </ion-list>
+                      </div>
+                      <div class="col col-67">
+                          <div data-tap-disabled="true">
+                              <div id="mapOvernight"></div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="spacer" style="height: 45px;"></div>
+              </ion-content>
+              </ion-view>
+            </ion-nav-view>
+          </ion-tab-->
+
+          <!--ion-tab title="Home" icon-off="ion-home" icon-on="ion-home" ui-sref="main.users">
+              <ion-nav-view name="tab-users"></ion-nav-view>
+          </ion-tab>
+
+          <ion-tab title="Overnight" icon-off="ion-email" icon-on="ion-email" ui-sref="main.conversations">
+              <ion-nav-view name="tab-conversations"></ion-nav-view>
+          </ion-tab-->
+
+          <ion-tab title="Home Address" ui-sref="settings.settingsAddress">
+            <ion-nav-view name="settingsAddress"></ion-nav-view>
+          </ion-tab>
+          <ion-tab title="Overnight Locations" ui-sref="settings.settingsLocations">
+            <ion-nav-view name="settingsLocations"></ion-nav-view>
+          </ion-tab>
+   
+        </ion-tabs>
+
+    <!--<div ng-include src="'templates/notifications.html'"></div>-->
+
+</ion-view>

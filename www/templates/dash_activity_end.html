@@ -1,0 +1,80 @@
+<ion-view view-title="End Service Call Out Visit" cache-view="false" name="home-address-view">
+    
+    <ion-nav-buttons side="right">
+      
+      <!--a class="button " href="#" ng-click="endActivity()" >
+        <i class="icon ion-android-checkbox-outline" style="font-size:25px !important;"></i>
+      </a>&nbsp;&nbsp;&nbsp;-->
+      <!--a class="button ion-android-send button-clear" href="#/main/dash_activity_send_sms"  style="font-size:22px !important;">
+      </a>&nbsp;&nbsp;&nbsp;-->
+      
+    </ion-nav-buttons>
+
+    <ion-content class="padding">
+
+        <ion-list>
+          
+          <a class="button icon-left ion-android-done-all button-positive button-outline button-full" href="#/dash_activity_end_items/{{activityId}}" >
+                <span style="position: absolute; left: 45px;">Finalize Service call out</span>
+                
+                <span class="badge badge-stable" style="position: absolute; right: 15px;">{{statusFinalize}}</span>
+          </a>
+          <!--a class="item item-divider item-icon-left" href="#/main/dash_activity_end_items/{{activityId}}" >
+              <i class="icon ion-android-done-all" style="font-size:20px !important;"></i>
+              <span style="font-size:14px !important;">Finalize Service call out</span>
+              <span class="item-note">{{statusFinalize}}</span>              
+          </a-->
+
+          <a class="button icon-left ion-edit button-positive button-outline button-full" href="#/dash_activity_end_sign/{{activityId}}" >
+                <span style="position: absolute; left: 45px;">Signature Service call out</span>
+                <span class="badge badge-stable" style="position: absolute; right: 15px;">{{statusSignature}}</span>
+          </a>
+
+          <!--a class="item item-divider item-icon-left" href="#/main/dash_activity_end_sign/{{activityId}}">
+                <i class="icon ion-edit" style="font-size:20px !important;"></i>
+                <span style="font-size:14px !important;">Signature Service call out</span>
+                <span class="item-note">{{statusSignature}}</span>
+          </a-->
+
+          <a class="button icon-left ion-compose button-positive button-outline button-full" href="#/dash_activity_end_sign/{{activityId}}" >
+                <span style="position: absolute; left: 45px;">Signature Job Paperwork Doc</span>
+                <span class="badge badge-stable" style="position: absolute; right: 15px;"></span>
+          </a>
+
+           <!--a class="item item-divider item-icon-left" href="#/main/dash_activity_end_sign/{{activityId}}">
+                <i class="icon ion-compose" style="font-size:20px !important;"></i>
+                <span style="font-size:14px !important;">Signature Job Paperwork Doc</span>
+                <span class="item-note">{{statusSignatureDoc}}</span>
+          </a-->
+
+          <a class="button icon-left ion-pricetags button-positive button-outline button-full" href="#/dash_activity_end_payment/{{activityId}}" >
+                <span style="position: absolute; left: 45px;">Payment</span>
+                <span class="badge badge-stable" style="position: absolute; right: 15px;">{{statusPayment}}</span>
+          </a>
+
+          <!--a class="item item-divider item-icon-left" href="#/main/dash_activity_end_payment/{{activityId}}">
+                <i class="icon ion-pricetags" style="font-size:20px !important;"></i>
+                <span style="font-size:14px !important;">Payment</span>
+                <span class="item-note">{{statusPayment}}</span>
+          </a--> 
+
+          <a class="button icon-left ion-android-send icon-dark button-positive button-outline button-full" href="#/dash_activity_send_sms/{{activityId}}" >
+                <span style="position: absolute; left: 45px;">Send Arrival Sms</span>
+                <span class="badge badge-stable" style="position: absolute; right: 15px;">{{statusSendSms}}</span>
+          </a>
+
+           <!--a class="item item-divider item-icon-left" href="#/main/dash_activity_send_sms/{{activityId}}" >
+                <i class="icon ion-android-send" style="font-size:20px !important;"></i>
+                <span style="font-size:14px !important;">Send Arrival Sms</span>
+          </a--> 
+
+           <a class="button icon-left ion-android-checkbox-outline button-positive button-outline button-full" href="#" ng-click="endCallVisit()" >
+                <span style="position: absolute; left: 45px;">End Call out Visit</span>
+                <span class="item-note"></span>
+          </a>
+
+        </ion-list>        
+        
+    </ion-content>  
+    <!--<div ng-include src="'templates/notifications.html'"></div>-->
+</ion-view>

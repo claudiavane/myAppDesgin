@@ -1,0 +1,80 @@
+<div class="bar bar-footer bar-stable" ng-controller="NotificationCtrl">
+
+    <div class="button-bar">
+        <a class="button button-icon button-clear icon zmdi zmdi-calendar-alt" ng-click="openPopover1($event)">
+        <span class="badge badge mybadge icon-badge" style="top:-5px;">5</span></a>
+        <a class="button button-icon button-clear icon zmdi zmdi-balance-wallet" ng-click="openPopover2($event)">
+        <span class="badge badge mybadge icon-badge" style="top:-5px;">2</span></a>        
+        
+        <a class="button button-icon button-clear icon zmdi zmdi-window-maximize" ng-click="openPopover3($event)">
+        <span class="badge badge mybadge icon-badge" style="top:-5px;">2</span></a>
+        <a class="button button-icon button-clear icon zmdi zmdi-notifications" ng-click="openPopover4($event)" ng-hide="userdata.role=='ROLE_Logistics_Rep'">
+        <span class="badge badge mybadge icon-badge" style="top:-5px;">2</span></a>
+    </div>
+</div>
+
+<script id="popover1.html" type="text/ng-template">
+    <ion-popover-view>
+
+        <ion-content>
+            <div class="list">
+                <div class="item">
+                    <h2>{{serviceCall[0].type}}</h2>
+                </div>
+                <a class="item item-notifications" href="#" ng-repeat="item in serviceCall[0].status">
+
+                    <p style="padding:  0px 28px 0px 0px;">{{item}}</p>
+                    <span class="badge mybadge">1</span>
+                </a>
+            </div>
+        </ion-content>
+    </ion-popover-view>
+</script>
+<script id="popover2.html" type="text/ng-template">
+    <ion-popover-view>
+        <ion-content>
+            <div class="list">
+                <div class="item">
+                    <h2>{{extra[0].type}}</h2>
+                </div>
+                <a class="item item-notifications" href="#" ng-repeat="item in extra[0].status">
+
+                    <p style="padding:  0px 28px 0px 0px;">{{item}}</p>
+                    <span class="badge mybadge">1</span>
+                </a>
+            </div>
+        </ion-content>
+    </ion-popover-view>
+</script>
+<script id="popover3.html" type="text/ng-template">
+    <ion-popover-view>
+        <ion-content>
+            <div class="list">
+                <div class="item">
+                    <h2>{{material[0].type}}</h2>
+                </div>
+                <a class="item item-notifications" href="#" ng-repeat="item in material[0].status">
+                    <p style="padding:  0px 28px 0px 0px;">{{item}}</p>
+                    <span class="badge mybadge">1</span>
+                </a>
+
+            </div>
+        </ion-content>
+    </ion-popover-view>
+</script>
+<script id="popover4.html" type="text/ng-template">
+    <ion-popover-view>
+        <ion-content>
+            <div class="list">
+                <div class="item">
+                    <h2>{{emergency[0].type}}</h2>
+                </div>
+                <a class="item item-notifications" href="#" ng-repeat="item in emergency[0].status">
+                    <p style="padding:  0px 28px 0px 0px;">{{item}}</p>
+                    <span class="badge mybadge">1</span>
+                </a>
+
+            </div>
+        </ion-content>
+    </ion-popover-view>
+</script>

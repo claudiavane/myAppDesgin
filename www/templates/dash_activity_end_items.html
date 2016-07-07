@@ -1,0 +1,207 @@
+<ion-view view-title="Finalize Service Call Out Visit" name="create-request-view">
+    
+    <ion-nav-buttons side="right">
+     
+        <!--a class="button ion-close button-clear" href="#" ng-click="cancel()" style="font-size:22px !important; color: #FFF;">        
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="button ion-checkmark button-clear" href="#" ng-click="save()" style="font-size:22px !important; color: #FFF;">               
+        </a>&nbsp;&nbsp;-->
+        <a class="button icon-left ion-android-close button-clear button-assertive" style="color:#fff" ng-click="cancel()">Cancel</a>&nbsp;&nbsp;&nbsp;
+        <a class="button icon-left ion-android-done button-clear button-assertive" style="color:#fff" ng-click="save()">Save</a>&nbsp;
+
+    </ion-nav-buttons>
+
+    <ion-content class="has-header" >
+
+        <div class="list">
+            <div class="item item-stable item-icon-left item-button-right" style="height: 55px;">
+              <i class="icon ion-android-checkbox-outline " style="font-size:20px !important;"></i>
+              <span style="font-size:20px !important;">Seletc Materials/Stock Items</span>                          
+            </div>
+            <ion-item class="item item-thumbnail-left item-icon-right" ng-repeat="item in materials" ng-click="selectItem(item)" >
+                <img ng-src="{{item.image}}" >
+                <h2>Code: {{item.code}}</h2>
+                <p>Range: {{item.category}}</p>
+                <p>Product: {{item.product}}</p> 
+                <p>Price $: {{item.price}}</p>
+                <p>Quantity: {{item.qttyRequest}}</p>
+                
+                <!--label class="checkbox" style="position: absolute; top: 6px; right: 6px;">
+                    <input type="checkbox" ng-model="item.checked" ng-checked="item.checked" >
+                </label--> 
+                <i class="icon ion-ios-checkmark" ng-show="item.checked"></i>
+                <i class="icon ion-ios-checkmark-outline" ng-show="!item.checked"></i>
+            </ion-item>                      
+            <ion-item class="item item-thumbnail-left item-icon-right" ng-repeat="item in stockItems" ng-click="selectItem(item)" >
+                <img ng-src="{{item.image}}">
+                <h2>Code: {{item.code}}</h2>
+                <p>Category: {{item.category}}</p>
+                <p>Product: {{item.product}}</p> 
+                <p>Price $: {{item.price}}</p>
+                <p>Quantity: {{item.qttyRequest}}</p>
+                <!--label class="checkbox" style="position: absolute; top: 6px; right: 6px;">
+                    <input type="checkbox" ng-model="item.checked" ng-checked="item.checked" >
+                </label-->                           
+                <i class="icon ion-ios-checkmark" ng-show="item.checked"></i>
+                <i class="icon ion-ios-checkmark-outline" ng-show="!item.checked"></i>
+            </ion-item>
+
+            <div class="item item-stable item-icon-left item-button-right" style="height: 55px;">
+              <i class="icon ion-android-checkbox-outline " style="font-size:20px !important;"></i>
+              <span style="font-size:20px !important;">Select Reason</span>                          
+            </div>
+
+            <label class="item item-input item-select" >
+              <div class="input-label">
+                Product Category
+              </div> 
+              <select ng-model="typeSelected.type" ng-change="changeProductType()">
+                 <option ng-repeat="each in types" value="{{each.type}}" >
+                    {{each.type}}
+                 </option>
+              </select>
+            </label>
+
+            <label class="item item-input item-select" >
+              <div class="input-label">
+                Product Range
+              </div> 
+              <select ng-model="rangeSelected.name" ng-change="changeProductRange()">
+                 <option ng-repeat="each in ranges" value="{{each.name}}" >
+                    {{each.name}}
+                 </option>
+              </select>
+            </label> 
+            
+            <!--ion-radio ng-model="other.code" ng-value="other.code" ng-click="selectOther()">              
+               <h2>Other</h2>
+               <p>{{data.other}}</p>
+            </ion-radio-->
+
+            <ion-radio ng-repeat="item in reasons"
+                       ng-value="item.mainCode"
+                       ng-model="data.reason"
+                       ng-checked="item.checked"
+                       ng-click="selectOther(item)">
+                <h2>Main Code: {{item.mainCode}}</h2>
+                <p>Sub Code: {{item.subCode}}</p>
+            </ion-radio>
+        </div>
+        
+        <div class="spacer" style="height: 45px;"></div>
+        
+    </ion-content>
+
+    <!--div class="tabs-striped tabs-color-dark">
+
+      <ion-tabs class="tabs-stable">          
+          <ion-tab title="Materials">
+              <ion-content class="has-header" >
+                  <div class="spacer" style="height: 90px;"></div>                  
+                  <div class="list">                      
+                      <div class="item item-thumbnail-left" ng-repeat="item in materials" href="#" >
+                          <img ng-src="{{item.image}}" >
+                          <h2>Code: {{item.code}}</h2>
+                          <p>Range: {{item.category}}</p>
+                          <p>Product: {{item.product}}</p> 
+                          <p>Price $: {{item.price}}</p>
+                          <p>Quantity: {{item.qttyRequest}}</p>
+                          
+                          <label class="checkbox" style="position: absolute; top: 6px; right: 6px;">
+                              <input type="checkbox" ng-model="item.checked" ng-checked="item.checked" >
+                          </label> 
+
+                      </div>
+                  </div>
+                  <div class="spacer" style="height: 45px;"></div>
+              </ion-content>
+          </ion-tab>
+
+          <ion-tab title="Stock Items">
+            <ion-content class="has-header">
+                <div class="spacer" style="height: 90px;"></div>
+                    <div class="list">
+                      
+                      <div class="item item-thumbnail-left" ng-repeat="item in stockItems" href="#" >
+                          <img ng-src="{{item.image}}">
+                          <h2>Code: {{item.code}}</h2>
+                          <p>Category: {{item.category}}</p>
+                          <p>Product: {{item.product}}</p> 
+                          <p>Price $: {{item.price}}</p>
+                          <p>Quantity: {{item.qttyRequest}}</p>
+                          <label class="checkbox" style="position: absolute; top: 6px; right: 6px;">
+                              <input type="checkbox" ng-model="item.checked" ng-checked="item.checked" >
+                          </label>                           
+                      </div>
+                  </div>
+                <div class="spacer" style="height: 45px;"></div>
+            </ion-content>
+          </ion-tab>
+
+          <ion-tab title="Reasons">
+            <ion-content class="has-header">
+                <div class="spacer" style="height: 90px;"></div>
+                    <div >
+                        <label class="item item-input item-select" >
+                          <div class="input-label">
+                            Product Category
+                          </div> 
+                          <select ng-model="typeSelected.type" ng-change="changeProductType()">
+                             <option ng-repeat="each in types" value="{{each.type}}" >
+                                {{each.type}}
+                             </option>
+                          </select>
+                        </label>
+
+                        <label class="item item-input item-select" >
+                          <div class="input-label">
+                            Product Range
+                          </div> 
+                          <select ng-model="rangeSelected.name" ng-change="changeProductRange()">
+                             <option ng-repeat="each in ranges" value="{{each.name}}" >
+                                {{each.name}}
+                             </option>
+                          </select>
+                        </label> 
+
+                    </div>
+                    <ion-list>
+
+                    <div class="list">
+                        <div class="item item-divider">
+                          Reasons
+                        </div>
+                        
+                        <ion-radio ng-model="other.code" ng-value="other.code" ng-click="selectOther()">
+                          
+                             <h2>Other</h2>
+                             <p>{{data.other}}</p>
+
+                        </ion-radio>
+                        <ion-radio ng-repeat="item in reasons"
+                                   ng-value="item.mainCode"
+                                   ng-model="data.reason"
+                                   ng-checked="item.checked">
+                            <h2>Main Code: {{item.mainCode}}</h2>
+                            <p>Sub Code: {{item.subCode}}</p>
+                        </ion-radio>
+
+                        <div class="item item-left" ng-repeat="item in reasons" >
+                            
+                            <h2>Main Code: {{item.mainCode}}</h2>
+                            <p>Sub Code: {{item.subCode}}</p>
+                            
+                            <label class="checkbox" style="position: absolute; top: 3px; right: 5px;">
+                                <input type="checkbox" ng-model="item.checked" ng-checked="item.checked" >
+                            </label>
+                        </div>
+                    </div>
+                <div class="spacer" style="height: 45px;"></div>
+            </ion-content>
+          </ion-tab>
+            
+        </ion-tabs>
+      </div-->
+
+    <!--<div ng-include src="'templates/notifications.html'"></div>-->
+</ion-view>

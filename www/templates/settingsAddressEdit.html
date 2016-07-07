@@ -1,0 +1,132 @@
+<!--ion-view view-title="Edit Home Address" name="home-address-edit-view">
+
+    <ion-nav-buttons side="right">
+       <a class="button ion-close button-clear" href="#" ng-click="cancel()" style="font-size:22px !important; color: #FFF;">        
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <a class="button ion-checkmark button-clear" href="#" ng-click="save()" style="font-size:22px !important; color: #FFF;">               
+        </a>&nbsp;&nbsp;
+
+    </ion-nav-buttons>
+
+    <ion-content class="padding">
+    
+         <ion-list>
+            
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Address Line 1</span>
+                <input type="text" id="add1" ng-model="serviceman.address.addressLine1" >
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Address Line 2</span>
+                <input type="text" id="add2" ng-model="serviceman.address.addressLine2" >
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Address Line 3</span>
+                <input type="text" id="add3" ng-model="serviceman.address.addressLine3" >
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Address Line 4</span>
+                <input type="text" id="add4" ng-model="serviceman.address.addressLine4" >
+            </label>
+
+            <label class="item item-input item-select item-stacked-label">
+              <span class="input-label">Country</span>
+              <select ng-model="serviceman.address.country" class="select select-assertive" >
+                <option value="Ireland" >
+                   Ireland
+                </option>
+              </select>
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Mobile</span>
+                <input type="text" id="add4" ng-model="serviceman.mobile" >
+            </label>
+        
+        </ion-list>
+        <div id="mapEdit" data-tap-disabled="true"></div>
+
+    </ion-content>
+
+    <!--<div ng-include src="'templates/notifications.html'"></div>-->
+       
+</ion-view-->
+
+<ion-view view-title="Edit Serviceman Home Address" cache-view="false">
+    
+      <ion-nav-buttons side="right">
+         <a class="button ion-close button-clear" ui-sref="settings.settingsAddress" style="font-size:20px !important; color: #FFF;"> Cancel        
+          </a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <a class="button ion-checkmark button-clear" href="#" ng-click="save()" style="font-size:20px !important; color: #FFF;"> Save               
+          </a>&nbsp;&nbsp;&nbsp;
+
+      </ion-nav-buttons>
+      <ion-content class="padding">
+          
+              <div class="row responsive-md">
+                <div class="col col-33">
+                    
+                      <!--h4>Edit Serviceman Home Address</h4-->
+                    
+                      <div class="list">                          
+                          <div class="item item-divider item-icon-right">
+                            <i class="icon ion-home dark" ></i>
+                            Address
+                          </div>
+                          <label class="item item-input item-stacked-label">
+                              <span class="input-label">Address Line 1</span>
+                              <input type="text" id="add1" ng-model="serviceman.address.addressLine1" >
+                          </label>
+
+                          <label class="item item-input item-stacked-label">
+                              <span class="input-label">Address Line 2</span>
+                              <input type="text" id="add2" ng-model="serviceman.address.addressLine2" >
+                          </label>
+
+                          <label class="item item-input item-stacked-label">
+                              <span class="input-label">Address Line 3</span>
+                              <input type="text" id="add3" ng-model="serviceman.address.addressLine3" >
+                          </label>
+
+                          <label class="item item-input item-stacked-label">
+                              <span class="input-label">Address Line 4</span>
+                              <input type="text" id="add4" ng-model="serviceman.address.addressLine4" >
+                          </label>
+
+                          <label class="item item-input item-select item-stacked-label">
+                            <span class="input-label">Country</span>
+                            <select ng-model="serviceman.address.country" class="select select-assertive" >
+                              <option value="Ireland" >
+                                 Ireland
+                              </option>
+                            </select>
+                          </label>
+
+                          <div class="item item-divider item-icon-right">
+                            <i class="icon ion-iphone dark"></i>
+                            Mobile
+                          </div>
+                          <label class="item item-input item-stacked-label">
+                              <span class="input-label">Mobile</span>
+                              <input type="text" id="add4" ng-model="serviceman.mobile" >
+                          </label>
+                          
+                      </div>
+                      <div class="spacer" style="height: 40px;"></div>
+                </div>
+
+                <div class="col col-67">
+                    <div id="mapEdit" data-tap-disabled="true"></div>
+                </div>
+            </div>
+          <div class="spacer" style="height: 45px;"></div>
+      </ion-content>
+    
+      <!--<div ng-include src="'templates/notifications.html'"></div>-->
+
+</ion-view>

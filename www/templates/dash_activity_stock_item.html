@@ -1,0 +1,49 @@
+<ion-modal-view>
+  <ion-header-bar class="bar nav-bar" >
+    <h4 class="title" style="color:#fff">Add Stock Item</h4>
+
+    <div class="buttons">
+     
+     <!--a class="button ion-close button-clear" href="#" ng-click="closeModal()" style="font-size:22px !important; color: #FFF;">         
+      </a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a class="button ion-checkmark button-clear" href="#" ng-click="selectAdjustment()" 
+          style="font-size:22px !important; color: #FFF;" >         
+      </a>&nbsp;&nbsp;&nbsp;-->
+      <a class="button icon-left ion-android-close button-clear button-assertive" style="color:#fff" ng-click="closeModal()">Cancel</a>&nbsp;&nbsp;&nbsp;
+      <a class="button icon-left ion-android-done button-clear button-assertive" style="color:#fff" ng-click="addMaterial()">Save</a>&nbsp;
+
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="padding" >
+    <form name="messageForm" >
+      <div class="list">
+         
+         <div class="row">
+          <div class="col">
+              <label class="item item-input">
+                  <span class="input-label">Quantity</span>
+                  <input type="number" ng-model="item.qttyRequest"  min="0" >
+              </label>
+           </div>
+         </div>
+         <div class="row">
+          <div class="col">
+            <!--p>Special Request/Extra: </p>
+            <label class="toggle toggle-positive" >
+
+               <input type="checkbox">
+               <div class="track">
+                 <div class="handle"></div>
+               </div>
+            </label-->
+            <ion-toggle ng-model="airplaneMode" toggle-class="toggle-calm">Special Request/Extra</ion-toggle>
+          </div>
+          
+          
+        </div>
+         
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

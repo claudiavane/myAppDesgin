@@ -1,0 +1,30 @@
+<ion-modal-view class="statusModal">
+  <ion-header-bar align-title="center" class="bar nav-bar" >
+
+      <h4 class="title" style="color: #fff;">Status Detail</h4>
+
+      <div class="buttons">
+
+        <a class="button ion-close button-clear" href="#" ng-click="closeStatus()" style="font-size:22px !important;color: #FFF;">        
+        </a>&nbsp;&nbsp;&nbsp;
+        
+      </div>
+  </ion-header-bar>
+
+  <ion-content >
+      
+
+              <div class="list">
+                  <div class="item" ng-repeat="item in status">
+                    {{item.text}}
+                    <span class="badge badge-stable" style="font-size:16px;">
+                      {{item.status}}
+                    </span>
+                  </div>
+
+              </div>
+      
+      <!--div class="spacer" style="height: 40px;"></div--> 
+  </ion-content>
+
+</ion-modal-view>

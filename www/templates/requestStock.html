@@ -1,0 +1,69 @@
+<ion-view view-title="Request Stock" cache-view="false"  name="create-request-view">
+    
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>        
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+      <!--<a class="button button-icon button-clear ion-ios-copy-outline" href="#/main/requestStockNew"></a>&nbsp;&nbsp;&nbsp;
+      <a class="button button-icon button-clear ion-ios-plus-empty" href="#/main/requestStockNew"></a>-->
+      <!--<button class="button button-icon button-clear ion-android-add" href="#/app/browse">
+      </button>-->
+            
+        <a class="button button-icon ion-android-close button-clear" style="color: #FFF;" ng-click="data.showDelete = false" ng-show="data.showDelete"> Cancel&nbsp;&nbsp;&nbsp; 
+        </a>  
+        <a class="button button-icon ion-android-done button-clear" style="color: #FFF;" ng-click="" ng-show="data.showDelete"> Done&nbsp;&nbsp;&nbsp; 
+        </a>
+        <a class="button button-icon ion-trash-b button-clear" style="color: #FFF;" ng-click="data.showDelete = true" ng-show="!data.showDelete"> Delete&nbsp;&nbsp;&nbsp;
+        </a>    
+        <a class="button button-icon ion-plus-round button-clear" href="#/requestStockNew" style="color: #FFF;"> Add
+        </a>
+    
+
+    </ion-nav-buttons>
+    <!--a class="button btn btn-right light" href="#/requestStockNew" ><i class="ion-plus"></i></a-->
+
+
+    <ion-content class="padding">
+        
+        <div class="item item-input-inset" >
+            <label class="item-input-wrapper">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" ng-model="searchQuery" placeholder="Search Stock" ></input>
+            </label>            
+        </div>
+        <!--<div class="item item-button-right item-divider " style="height: 55px;">
+          
+              <a class="button icon-left ion-trash-b button-dark" style="font-size:18px !important; position: absolute; top: 5px; right: 93px;" ng-click="data.showDelete = true" ng-show="!data.showDelete">Delete</a>
+
+              <a class="button icon-left ion-android-close button-dark" style="font-size:18px !important; position: absolute; top: 5px; right: 93px;" ng-click="data.showDelete = false" ng-show="data.showDelete">Cancel</a>
+
+              <a class="button icon-left ion-plus-round  button-positive" style="font-size:18px !important; position: absolute; top: 5px; right: 5px;" href="#/requestStockNew">Add</a>
+
+          &nbsp;                    
+        </div>-->
+        
+        <ion-list show-delete="data.showDelete">
+          <ion-item class="item-remove-animate item-icon-right" ng-repeat="item in requests | filter:searchQuery | orderBy: '-id' "  type="item-text-wrap" href="#/requestStockEdit/{{item.id}}">
+                <h2>Request ID: {{item.id}}</h2>
+                <!--p>Call Out visit: {{item.callOutVisit}}</p-->
+                <p>Status: {{item.status}}</p>
+                <p>Request: {{item.date}}</p> 
+
+                <!--i class="icon ion-ios-arrow-forward"></i>         
+                <ion-option-button class="button-assertive" ng-click="remove(item)">
+                  <i class="icon ion-trash-b"></i>
+                </ion-option-button-->
+                <ion-delete-button class="ion-minus-circled no-shadow" ng-click="onItemDelete(item)">
+                </ion-delete-button>
+
+                <span class="item-note">
+                  <i class="icon ion-chevron-right"></i>
+                </span>                
+          </ion-item>
+
+        </ion-list>
+        <div class="spacer" style="height: 65px;"></div>
+    </ion-content>
+    <!--<div ng-include src="'templates/notifications.html'"></div>-->
+</ion-view>

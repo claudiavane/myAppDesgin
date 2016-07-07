@@ -1,0 +1,43 @@
+<ion-modal-view>
+  <ion-header-bar class="bar nav-bar" >
+    <h4 class="title" style="color:#fff">Add a Depot Visit</h4>
+
+    <div class="buttons">
+
+      <!--<a class="button icon-left ion-android-close button-clear button-assertive" style="color:#fff" ng-click="depotCloseModal()">Cancel</a>&nbsp;&nbsp;&nbsp;
+      <a class="button icon-left ion-android-done button-clear button-assertive" style="color:#fff" ng-click="addDepot()">Save</a>-->
+
+      <a class="button ion-close button-clear" href="#" ng-click="depotCloseModal()" style="font-size:22px !important; color: #FFF;">        
+        </a>&nbsp;&nbsp;&nbsp;
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="padding" >
+    <form name="messageForm" >
+      <div class="list">
+          
+          <label class="item item-input">                      
+            <span class="input-label">Estimated Duration for a Depot</span> 
+            <input type="number" ng-model="duration" >
+          </label>
+          
+          <div class="item item-divider">
+            Select a Depot
+          </div>
+          <ion-radio ng-repeat="item in depots"
+                     ng-value="item"
+                     ng-model="addDepot.depotSelected"
+                     ng-checked="item.checked">
+              <h3>{{item.desc}}</h3>   
+              <h4>{{item.address}}</h4>
+          </ion-radio>
+      </div>
+    </form>
+  </ion-content>
+  <div class="bar bar-footer item-button-right" style="height:50px;">
+       <div class="buttons " >
+            <a class="button button-dark" ng-click="depotCloseModal()">Cancel</a>
+            <a class="button button-assertive " ng-click="addDepot()">Save</a>
+       </div>  
+  </div>
+</ion-modal-view>

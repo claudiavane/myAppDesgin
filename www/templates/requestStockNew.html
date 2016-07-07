@@ -1,0 +1,56 @@
+<ion-view view-title="New Request Stock" name="create-request-view">
+        
+    <ion-nav-buttons side="right">
+      
+        <!--a class="button ion-close button-clear" href="#" ng-click="cancel()" style="font-size:22px !important; color: #FFF;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <a class="button ion-checkmark button-clear" href="#" ng-click="save()" style="font-size:22px !important; color: #FFF;"></a>&nbsp;&nbsp;-->
+        <a class="button icon-left ion-android-close button-clear button-assertive" style="color:#fff" ng-click="cancel()">Cancel</a>&nbsp;&nbsp;&nbsp;
+        <a class="button icon-left ion-android-done button-clear button-assertive" style="color:#fff" ng-click="save()">Save</a>&nbsp;
+        
+    </ion-nav-buttons>
+
+    <ion-content class="padding">
+        <!--<div class="spacer" style="height: 10px;"></div>-->
+        <div class="item item-input-inset" >
+            <label class="item-input-wrapper">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" ng-model="searchQuery" placeholder="Search Stock Item"></input>
+            </label>            
+        </div>
+        <div class="list">
+            
+            <div class="item item-thumbnail-left item-icon-right" ng-repeat="item in materials | filter:searchQuery" href="#" >
+                <img ng-src="{{item.image}}">
+                <h2>Code: {{item.code}}</h2>
+                <p>Category: {{item.category}}</p>
+                <p>Product: {{item.product}}</p> 
+                <p>Price $: {{item.price}}</p>
+                <div >
+                    <p style="font-weight: bold;">Quantity:</p>
+                    <input type="number" ng-model="item.qttyRequest" min="0" style="position: absolute; bottom: 10px; right: 8px;  width:6.5em;
+                    padding:2px;
+                    margin:0;
+                    border:1px solid #ddd;
+                    border-radius:5px;
+                    text-align:center;">
+                </div>
+
+                <label class="checkbox" style="position: absolute; top: 6px; right: 6px;">
+                    <input type="checkbox" ng-model="item.checked" ng-checked="item.checked" >
+                </label>
+                
+                <!--
+                <span class="badge badge-dark" style="position: absolute; top: 104px; right: 8px;">{{item.qttyRequest}}</span>
+                <div style="position: relative; top: 0px; right: 0px;">
+                    <button ng-click="minusItem(item)" class="button button-small ion-android-remove button-assertive"></button>&nbsp;
+                    <button ng-click="addItem(item)" class="button button-small ion-android-add button-dark" ></button>
+                </div>-->
+                
+            </div>
+
+        </div>
+        <div class="spacer" style="height: 10px;"></div>        
+    </ion-content>
+    <!--<div ng-include src="'templates/notifications.html'"></div>-->
+</ion-view>

@@ -1,0 +1,47 @@
+<ion-view view-title="Payment" name="payment">
+    
+    <ion-nav-buttons side="right">
+      
+        <!--a class="button ion-close button-clear" href="#" ng-click="cancel()" style="font-size:22px !important; color: #FFF;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <a class="button ion-checkmark button-clear" href="#" ng-click="save()" style="font-size:22px !important; color: #FFF;"></a>&nbsp;&nbsp;-->
+        <a class="button icon-left ion-android-close button-clear button-assertive" style="color:#fff" ng-click="cancel()">Cancel</a>&nbsp;&nbsp;&nbsp;
+        <a class="button icon-left ion-android-done button-clear button-assertive" style="color:#fff" ng-click="save()">Save</a>&nbsp;
+
+    </ion-nav-buttons>
+ 
+      <ion-content class='has-header padding'>
+          <!--div class="spacer" style="height: 30px;"></div--> 
+          <div class="list">
+            
+            <div class="item item-stable item-icon-left item-button-right" style="height: 55px;">
+                <i class="icon ion-compose" style="font-size:20px !important;"></i>
+                <span style="font-size:20px !important;">Payment to collect</span>                          
+                
+            </div> 
+
+            <div class="item">
+                Total Outstanding
+                <span class="badge badge-stable">2500 $us</span>
+            </div>
+            
+            <label class="item item-input item-select" >
+                <div class="input-label">
+                  Payment method
+                </div> 
+                <select ng-model="typeSelected.type">
+                   <option ng-repeat="each in types" value="{{each.type}}" >
+                      {{each.type}}
+                   </option>
+                </select>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Collected Amount</span>
+              <input type="number" value="2500">
+            </label>
+          
+          </div>
+          
+          <div class="spacer" style="height: 30px;"></div>
+      </ion-content>
+</ion-view>

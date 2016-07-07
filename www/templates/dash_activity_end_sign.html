@@ -1,0 +1,50 @@
+<ion-view view-title="Customer Signature" name="signature">
+    
+    <ion-nav-buttons side="right">
+      
+        <!--a class="button ion-close button-clear" href="#" ng-click="cancel()" style="font-size:22px !important; color: #FFF;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <a class="button ion-checkmark button-clear" href="#" ng-click="saveCanvas()" style="font-size:22px !important; color: #FFF;">               
+        </a>&nbsp;&nbsp;-->
+        <a class="button icon-left ion-android-close button-clear button-assertive" style="color:#fff" ng-click="cancel()">Cancel</a>&nbsp;&nbsp;&nbsp;
+        <a class="button icon-left ion-android-done button-clear button-assertive" style="color:#fff" ng-click="saveCanvas()">Save</a>&nbsp;
+
+    </ion-nav-buttons>
+ 
+      <ion-content class='has-header padding'>
+
+          <div class="row responsive-md">
+                <div class="col">
+                    <div class="item item-stable item-icon-left item-button-right" style="height: 55px;">
+                        <i class="icon ion-compose" style="font-size:20px !important;"></i>
+                        <span style="font-size:20px !important;">Please sign here</span>                          
+                        <a class="button icon-left ion-trash-b button-clear button-dark" ng-click="clearCanvas()">Clear</a>
+                    </div> 
+
+                    <div class="item">
+                      <canvas id='signatureCanvas' width='730' height='350' style='border: 1px solid gray;' ng-mousemove="mouseMove()" on-touch="downEvent($event)" on-release="upEvent($event)" ></canvas>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="item item-stable item-icon-left" style="height: 55px;">
+                        <i class="icon ion-compose" style="font-size:20px !important;"></i>
+                        <span style="font-size:20px !important;">Result of sign</span>              
+                    </div>
+                    <img ng-src='{{signature}}'/>
+                </div>
+          </div>
+         
+              <!--div class="item item-divider item-icon-left item-button-right">
+                <i class="icon ion-compose" style="font-size:20px !important;"></i>
+                <span style="font-size:14px !important;">Please sign here</span>
+                
+                <a class="button ion-trash-b button-clear button-assertive button-small" ng-click='clearCanvas()' style="font-size:26px !important; position: absolute; top: 2px; right: 5px;"></a>                
+              </div-->
+     
+              <!--div class='button-bar'>
+                  <a class='button button-dark icon-left ion-document' ng-click='clearCanvas()'>Clear</a>
+                  <a class='button button-dark icon-left ion-archive' ng-click='saveCanvas()'>Save</a>
+              </div-->
+          
+      </ion-content>
+</ion-view>

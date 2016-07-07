@@ -1,0 +1,82 @@
+<ion-modal-view class="filters">
+    <ion-header-bar align-title="center" class="bar nav-bar">
+
+        <h4 class="title" style="color: #fff;">Filters</h4>
+
+        <div class="buttons">
+            <a class="button ion-close button-clear" href="#" ng-click="closeFilter()" style="font-size:22px !important; color:#FFF;"></a>&nbsp;
+           <!-- <a class="button icon-left ion-android-close button-clear button-assertive" style="color:#fff" ng-click="closeFilter()">Cancel</a>&nbsp;&nbsp;&nbsp;
+            <a class="button icon-left ion-android-done button-clear button-assertive" style="color:#fff" ng-click="filter()">Filter</a>&nbsp;-->
+
+        </div>
+    </ion-header-bar>
+
+    <ion-content>
+
+        <div class="list">
+
+            <div class="item item-divider" style="padding:10px 0px;">
+                <!--<i class="icon ion-android-wifi custom-icon-list"></i>-->
+                <a class="button ion-android-checkbox-outline-blank button-clear button-positive item-checkbox-all" ng-click='selectAllTypes()' ng-show="!isAllSelectTypes"></a>
+                <a class="button ion-android-checkbox-outline button-clear button-positive item-checkbox-all" ng-click='selectAllTypes()' ng-show="isAllSelectTypes"></a>
+                <span style="padding-left: 60px;">Item Type</span>
+
+            </div>
+            <ion-checkbox class="item" ng-repeat="type in types" ng-model="type.checked" ng-checked="type.checked">
+                {{type.text}}
+            </ion-checkbox>
+
+
+            <div class="item item-divider" style="padding:10px 0px;">
+                <a class="button ion-android-checkbox-outline-blank button-clear button-positive item-checkbox-all" ng-click='selectAllDetails()' ng-show="!isAllSelectDetails"></a>
+
+                <a class="button ion-android-checkbox-outline button-clear button-positive item-checkbox-all" ng-click='selectAllDetails()' ng-show="isAllSelectDetails"></a>
+                <span style="padding-left: 60px;">Details</span>
+            </div>
+            <ion-checkbox class="item" ng-repeat="detail in details" ng-model="detail.checked" ng-checked="detail.checked">
+                {{detail.text}}
+            </ion-checkbox>
+
+            
+            <div class="item item-divider">
+                Created Date
+            </div>
+            <label class="item item-input">
+                <span class="input-label">Date From</span>
+                <input type="date">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Date To</span>
+                <input type="date">
+            </label>
+
+            <div class="item item-divider" style="padding:10px 0px;">
+                <a class="button ion-android-checkbox-outline-blank button-clear button-positive item-checkbox-all" ng-click='selectAllStates()' ng-show="!isAllSelectStates"></a>
+                <a class="button ion-android-checkbox-outline button-clear button-positive item-checkbox-all" ng-click='selectAllStates()' ng-show="isAllSelectStates"></a>
+                <span style="padding-left: 60px;">Status</span>
+            </div>
+            <ion-checkbox class="item" ng-repeat="state in states" ng-model="state.checked" ng-checked="state.checked">
+                {{state.text}}
+            </ion-checkbox>
+        </div>
+        <!--div class="spacer" style="height: 40px;"></div-->
+    </ion-content>
+    <!--<div class="bar bar-footer">
+       <div class="button-bar" style="justify-content:flex-end;">
+            <!--<a class="button button-stable button-large icon-left ion-close-round button-dialogs" ng-click="closeFilter()">Cancel</a>
+            <a class="button button-dark button-large icon-left ion-checkmark-round button-dialogs" ng-click="filter()">Filter</a>
+           
+           <a class="button icon-left ion-close button-dark button-dialogs" ng-click="closeFilter()">Cancel</a>
+           <a class="button icon-left ion-checkmark button-assertive button-dialogs" ng-click="filter()">Filter</a>
+           
+       </div>  
+    </div>-->
+    
+    <div class="bar bar-footer item-button-right" style="height:50px;">
+       <div class="buttons">
+            <a class="button button-dark"  ng-click="closeFilter()">Cancel</a>
+            <a class="button button-assertive " ng-click="filter()">Filter</a>
+       </div>  
+  </div>
+
+</ion-modal-view>

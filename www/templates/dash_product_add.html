@@ -1,0 +1,99 @@
+<ion-view view-title="Add Stock Item" name="create-request-view">
+    <ion-nav-title >
+        <span ng-show="isEdit">Edit Stock Item</span>
+        <span ng-show="!isEdit">Add Stock Item</span>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+      
+      <div class="buttons">
+        <!--a class="button ion-close button-clear" href="#" ng-click="cancel()" style="font-size:22px !important; color: #FFF;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <a class="button ion-checkmark button-clear" href="#" ng-click="save()" style="font-size:22px !important; color: #FFF;"></a>&nbsp;&nbsp;-->
+        <a class="button icon-left ion-android-close button-clear button-assertive" style="color:#fff" ng-click="cancel()">Cancel</a>&nbsp;&nbsp;&nbsp;
+        <a class="button icon-left ion-android-done button-clear button-assertive" style="color:#fff" ng-click="save()">Save</a>&nbsp;
+
+      </div>
+
+    </ion-nav-buttons>
+
+    <ion-content >                    
+        
+        <div class="item item-stable item-icon-left item-button-right" style="height: 55px;">
+          <i class="icon ion-android-checkbox-outline " style="font-size:20px !important;"></i>
+          <span style="font-size:20px !important;">Seletc Stock Items</span>                          
+        </div>
+
+        <div class="item item-input-inset" >
+            <label class="item-input-wrapper">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" ng-model="searchQuery" placeholder="Search Stock Item"></input>
+            </label>            
+        </div>
+            
+        <ion-item class="item item-thumbnail-left item-icon-right" ng-repeat="item in materials | filter:searchQuery" ng-click='openAddMaterial(item)' >
+            <img ng-src="{{item.image}}" >
+            <h2>Code: {{item.code}}</h2>
+            <p>Category: {{item.category}}</p>
+            <p>Product: {{item.product}}</p> 
+            <p>Price $: {{item.price}}</p>
+            <p>Quantity: {{item.qttyRequest}} </p>
+            <!--p>Status: {{item.status}}</p-->
+            
+            <!--a href="#" class="button button-calm button-small" ng-click='setSize()' style="font-size:14px !important; position: absolute; bottom: 2px; right: 5px;" >Price per m2</a>
+            
+            <a href="#" class="button button-dark button-small" ng-click='listAdjustments()' style="font-size:14px !important; position: absolute; bottom: 2px; right: 100px;" >Adjustments</a>
+
+            <label class="checkbox" style="position: absolute; top: 3px; right: 5px;" ng-show="!isEdit">
+                <input type="checkbox" ng-model="item.checked" ng-checked="item.checked" >
+            </label-->
+
+            <span class="badge badge-dark" ng-show="item.checked">
+              Selected
+            </span>
+
+             <span class="item-note">
+              <i class="icon ion-chevron-right"></i>
+            </span>
+
+        </ion-item>
+        
+        <div class="item item-stable item-icon-left item-button-right" style="height: 55px;">
+          <i class="icon ion-compose" style="font-size:20px !important;"></i>
+          <span style="font-size:20px !important;">Add a Comment</span>                          
+          <a class="button icon-left ion-trash-b button-clear button-dark" ng-click="clearCanvas()">Clear</a>
+        </div> 
+        
+        <label class="item item-input">
+            <textarea name="Text1" placeholder="Type a Comment" rows="6" ng-model="comment">
+            </textarea>
+        </label>
+        
+        <div class="item item-stable item-icon-left item-button-right" style="height: 55px;">
+          <i class="icon ion-paintbrush" style="font-size:20px !important;"></i>
+          <span style="font-size:20px !important;">Add a Draw</span>
+          
+          <!--a class="button ion-trash-b button-clear button-assertive button-small" ng-click='clearCanvas()' style="font-size:26px !important; position: absolute; top: 2px; right: 5px;"></a-->
+           <a class="button icon-left ion-trash-b button-clear button-dark" ng-click="clearCanvas()">Clear</a>
+
+        </div> 
+        <div class="item">       
+          <canvas id='signatureCanvas' width='710' height='400' style='border: 1px solid gray;'></canvas>
+        </div>
+          
+        <div class="item item-stable item-icon-left item-button-right" style="height: 55px;">
+              <i class="icon ion-image" style="font-size:20px !important;"></i>
+              <span style="font-size:20px !important;">Upload Image</span>
+              
+              <a class="button icon-left ion-trash-b button-clear button-dark" ng-click="clearCanvas()" >Clear</a>
+
+        </div>
+        <button class="button button-dark">
+          Choose file
+        </button>
+
+        <div class="spacer" style="height: 45px;"></div>
+    </ion-content>
+    
+    <!--<div ng-include src="'templates/notifications.html'"></div>-->
+</ion-view>

@@ -1,0 +1,69 @@
+<ion-view view-title="Settings" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+
+        <a class="button button-icon ion-android-close button-clear" style="color: #FFF;" ng-click="data.showDelete = false" ng-show="data.showDelete"> Cancel&nbsp;&nbsp;&nbsp; 
+        </a>
+        <a class="button button-icon ion-android-done button-clear" style="color: #FFF;" ng-click="" ng-show="data.showDelete"> Done&nbsp;&nbsp;&nbsp; 
+        </a>
+        <a class="button button-icon ion-trash-b button-clear" style="color: #FFF;" ng-click="data.showDelete = true" ng-show="!data.showDelete"> Delete&nbsp;&nbsp;&nbsp;
+        </a>
+        <a class="button button-icon ion-plus-round button-clear" ng-click="addLocation()" style="color: #FFF;"> Add
+        </a>
+
+
+    </ion-nav-buttons>
+
+
+    <ion-content padding="true">
+
+        <div class="row responsive-md">
+            <div class="col col-33">
+
+                <!--<div class="item item-button-right item-divider" style="height: 55px;">
+
+                    <a class="button ion-plus-round button-clear button-dark " ng-click='clearCanvas()' style="font-size:34px !important; position: absolute; top: 1px; right: 45px;"></a>
+
+			              <a class="button ion-trash-b button-clear button-dark " ng-click='clearCanvas()' style="font-size:34px !important; position: absolute; top: 1px; right: 5px;"></a>
+                    <a class="button icon-left ion-trash-b button-dark" style="font-size:18px !important; position: absolute; top: 5px; right: 93px;" ng-click="data.showDelete = true" ng-show="!data.showDelete">Delete</a>
+
+                    <a class="button icon-left ion-android-close button-dark" style="font-size:18px !important; position: absolute; top: 5px; right: 93px;" ng-click="data.showDelete = false" ng-show="data.showDelete">Cancel</a>
+
+                    <a class="button icon-left ion-plus-round  button-positive" style="font-size:18px !important; position: absolute; top: 5px; right: 5px;" ng-click="addLocation()">Add</a> &nbsp;
+                </div> -->
+
+                <div class="spacer" style="height: 3px;"></div>
+                <ion-list show-delete="data.showDelete">
+
+                    <ion-item class="item item-text-wrap item-icon-right" ng-repeat="item in overnightLocations" ng-click="editLocation(item)">
+
+                        <h2>{{item.address}}</h2>
+                        <br/>
+                        <p>Date From: {{item.dateFrom | date:'dd-MM-yyyy'}}</p>
+                        <p>Date To: {{item.dateTo | date:'dd-MM-yyyy'}}</p>
+                        <p>GPS Latitude: {{item.lat}}</p>
+                        <p>GPS Longitude: {{item.lng}}</p>
+
+                        <ion-delete-button class="ion-minus-circled no-shadow" ng-click="onItemDelete(item)">
+                        </ion-delete-button>
+
+                        <span class="item-note">
+                              <i class="icon ion-chevron-right"></i>
+                            </span>
+
+                    </ion-item>
+                </ion-list>
+            </div>
+            <div class="col col-67">
+                <div data-tap-disabled="true">
+                    <div id="mapOvernight"></div>
+                </div>
+            </div>
+        </div>
+        <div class="spacer" style="height: 45px;"></div>
+
+    </ion-content>
+</ion-view>

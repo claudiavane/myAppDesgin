@@ -1,0 +1,23 @@
+<ion-view view-title="Sign-In" name="login-view" hide-nav-bar="true" class="login-bg" cache-view="false">
+
+    <ion-content class="padding">
+
+        <div style="display: flex;align-items: center;align-content: center;height: 100%;">
+            <div class="login-box">
+                <br>
+                <div class="col text-center login-logo">
+                    <img src="img/logo.png" width="100%">
+                    <h2 class="dark" style="margin:10px 0 0 0">Login</h2>
+                </div>
+                <form>
+                    <ion-md-input placeholder="E-Mail Address" highlight-color="assertive" type="text" ng-model="data.username" style="border-width: 0px 0px 1px 0px; padding-left:2px !important;"></ion-md-input>
+                    <ion-md-input placeholder="Password" highlight-color="assertive" type="password" ng-model="data.password" style="border-width: 0px 0px 1px 0px; padding-left:2px !important;"></ion-md-input>
+                    <br>
+                    <button class="button button-block " ng-click="login(data)" style="color: #FFF; background: rgb(217,35,15);"> Login</button>
+                    <button class="button button-block button-clear button-dark " ng-click="account(data)" style="width:">Forgotten Account Details</button>
+                </form>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+

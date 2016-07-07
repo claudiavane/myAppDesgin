@@ -1,0 +1,78 @@
+<ion-view name="create-request-view">
+    
+    <ion-nav-title >
+        <span ng-show="isEdit">Edit Request Stock</span>
+        <span ng-show="!isEdit">Mark Request Stock</span>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <!--a class="button ion-close button-clear" href="#" ng-click="cancel()" style="font-size:22px !important; color: #FFF;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <a class="button ion-checkmark button-clear" href="#" ng-click="save()" style="font-size:22px !important; color: #FFF;"></a>&nbsp;&nbsp;-->
+        <a class="button icon-left ion-android-close button-clear button-assertive" style="color:#fff" ng-click="cancel()">Cancel</a>&nbsp;&nbsp;&nbsp;
+        <a class="button icon-left ion-android-done button-clear button-assertive" style="color:#fff" ng-click="save()">Save</a>&nbsp;
+        
+    </ion-nav-buttons>
+
+    <ion-content class="padding">
+        
+        <div class="list">
+            <!--<div class="item" ng-repeat="item in requests | filter:searchQuery" >
+                <h2>Request ID {{item.id}}</h2>
+                <p>Call Out visit {{item.callOutVisit}}</p>
+                <span class="item-note">
+                  {{item.date}}    
+                   <i class="icon ion-checkmark-circled"></i>          
+                </span>
+            </div-->
+
+            <div class="item item-divider item-icon-left">
+                <i class="icon ion-pin" style="font-size:20px !important;"></i>
+              Request Stock
+            </div>
+
+            <div class="item item-text-wrap">
+                <h2>Request ID: {{requested.id}}</h2>
+                <p>Call Out visit: {{requested.callOutVisit}}</p>
+                <p>Status: {{requested.status}}</p>
+                <p>Created: {{requested.date}}</p> 
+            </div>
+
+            <div class="item item-divider item-icon-left item-button-right" >
+                <i class="icon ion-social-buffer" style="font-size:20px !important;"></i>         Requested Items
+                <div ng-hide="isEdit">
+                    <a href="#" class="button ion-ios-checkmark-outline button-clear button-positive button-small" ng-click='selectAll()' style="font-size:28px !important; position: absolute; top: 2px; right: 5px;" ng-hide="isAllSelect" ></a>
+
+                    <a href="#" class="button ion-ios-checkmark button-clear button-positive button-small"  ng-click='selectAll()' style="font-size:28px !important; position: absolute; top: 2px; right: 5px;" ng-hide="!isAllSelect"></a>
+
+                </div>
+            </div>
+            
+            <div class="item item-thumbnail-left item-icon-right" ng-repeat="item in requested.materials | filter:searchQuery" href="#" >
+                <img ng-src="{{item.image}}">
+                <h2>Code: {{item.code}}</h2>
+                <p>Category: {{item.category}}</p>
+                <p>Product: {{item.product}}</p> 
+                <p>Price $: {{item.price}}</p>
+                <div >
+                    <p style="font-weight: bold;">Quantity:</p>
+                    <input type="number" ng-model="item.qttyRequest" min="0" style="position: absolute; bottom: 10px; right: 8px;  width:6.5em;
+                    padding:2px;
+                    margin:0;
+                    border:1px solid #ddd;
+                    border-radius:5px;
+                    text-align:center;"
+                    ng-hide="!isEdit">
+                    <!--p style="font-weight: bold;" ng-hide="isEdit">{{item.qttyRequest}}</p-->
+                    <span class="badge badge-assertive" ng-hide="isEdit" style="position: absolute; top: 95px; right: 15px;">{{item.qttyRequest}}</span>
+
+                </div>
+                <label class="checkbox" style="position: absolute; top: 6px; right: 6px;" ng-show="!isEdit">
+                    <input type="checkbox" ng-model="item.checked" ng-checked="item.checked" >
+                </label>
+            </div>
+        </div>
+        <div class="spacer" style="height: 10px;"></div>        
+    </ion-content>
+    <!--<div ng-include src="'templates/notifications.html'"></div>-->
+</ion-view>

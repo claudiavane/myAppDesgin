@@ -1,0 +1,19 @@
+<ion-view view-title="Work Queue" name="work-queue-view">
+ 	
+ 	<ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>        
+    </ion-nav-buttons>
+
+    <ion-tabs class="tabs-stable ">
+
+        <ion-tab title="Main" ui-sref="workqueue.workqueueMain">
+          <ion-nav-view name="workqueueMain"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Products" ui-sref="workqueue.workqueueProduct">
+          <ion-nav-view name="workqueueProduct"></ion-nav-view>
+        </ion-tab>   
+    </ion-tabs>
+
+    <!--<div ng-include src="'templates/notifications.html'"></div>-->
+
+</ion-view>
