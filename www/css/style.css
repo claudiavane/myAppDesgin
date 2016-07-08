@@ -120,12 +120,12 @@
     -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    background: #2196f3;
+    background: #444444;
     -webkit-border-radius: 50% !important;
     -moz-border-radius: 50% !important;
     border-radius: 50% !important;
     font-size: 24px;
-    padding: 7px 10px 10px 10px;
+    padding: 7px 8px 10px 10px;
     text-decoration: none;
     width: 54px;
     height: 54px;
@@ -136,7 +136,7 @@
 }
 
 .btn:hover {
-    background: #0272a2;
+    background: #18BC9C;
     color: #fff;
     text-decoration: none;
     -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -151,7 +151,8 @@
 }
 
 .btn-right {
-    right: 26px;
+    right: 24px;
+    /*top: 65px;*/
     bottom:75px;
 }
 
@@ -614,14 +615,14 @@ width:390px !important;
 }
 
 .chat-bubble.right {
-  background-color: #158ffe;
-  color: #fff;
+  background-color: #C1ECE2;
+  /*color: #fff;*/
   float: right;
   margin-right: 55px;
 }
 
 .chat-bubble.right:before {
-  background-color: #158ffe;
+  background-color: #C1ECE2;
   right: 10px;
   -webkit-transform: rotate(118deg) skew(-5deg);
 }
@@ -668,7 +669,6 @@ at the bottom as the textarea resizes */
 .cf {
   clear: both !important;
 }
-
 
 
 .popupmap .item-radio .radio-icon {

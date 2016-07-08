@@ -1,4 +1,4 @@
-<ion-view view-title="Call Out Visit" name="home-address-view" cache-view="false" >
+<ion-view view-title="Service Call-Out Visit" name="home-address-view" cache-view="false" >
 
     <!--ion-nav-bar class="bar bar-assertive">
           <ion-nav-back-button class="button-icon button-clear">
@@ -15,12 +15,7 @@
     </ion-nav-back-button>
 
     <ion-nav-buttons side="right">
-      
-      <a class="button ion-merge button-clear" href="#/dash_activity_material_stock_split/{{callVisit.activity.serviceCallOutId}}" style="font-size:22px !important; color: #FFF;">        
-      </a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <!--a class="button ion-ios-redo button-clear" ng-click="openPopover1($event)" style="font-size:22px !important; color: #FFF;" ng-disabled="isStarted">
-      </a>&nbsp;&nbsp;-->
-
+     
       <a class="button button-icon ion-android-more-vertical button-clear" ng-click="popover_options.show($event)" style="font-size:22px !important; color: #FFF; width:32px;">
       </a>
   
@@ -31,17 +26,17 @@
         
         <ion-content>
           <div class="list">
-              <a class="item icon-left ion-ios-checkmark-outline" ng-click="startActivity()" >
-                Start Visit             
+              <a class="item icon-left ion-ios-photos-outline" href="#/dash_activity_material_stock_split/{{callVisit.activity.serviceCallOutId}}" >
+                Split this Visit             
               </a>
               <a class="item icon-left ion-ios-clock-outline" ng-click="rescheduleToday()" >
                 Reschedule this Visit Today
               </a>
               <a class="item icon-left ion-ios-refresh-outline" ng-click="addComment()">
-                Rescheduling of this Visit for another day
+                Reschedule this Visit for another Day
               </a>            
               <a class="item icon-left ion-ios-close-outline" ng-click="addComment1()" >
-                Cannot attend this Visit
+                Cannot Attend this Visit
               </a>   
               <a class="item icon-left ion-ios-checkmark" ng-click="endActivity()" >
                 End Visit       
@@ -52,16 +47,91 @@
       </ion-popover-view>
     </script>
     
+    <a class="button btn btn-right light" ng-click="startActivity()"><i class="ion-play"></i></a>
+
     <ion-content class="padding has footer">
-        <div class="list ">
-            
+        <div class="card">
+          <!--<div class="item item-divider item-icon-left">
+            <i class="icon ion-android-home dark" style="font-size: 22px;"></i>
+            <h2>Service Call-Out Visit Information</h2>
+          </div>-->
+          <div class="item item-stable item-icon-left item-button-right" style="height: 55px;">
+            <i class="icon ion-android-home" style="font-size:20px;"></i>
+            <span style="font-size:20px;">Service Call-Out Visit Information</span>
+          </div>
+          <div class="item item-text-wrap">
+            <div class="row">
+              <div class="col col-20">
+                <p>PO Number</p>
+                <p>Estimated Duration</p>
+              </div>
+              <div class="col">
+                <h3>{{callVisit.activity.serviceCallOutId}}</h3>
+                <h3>40 min</h3>
+              </div>
+            </div>
+          </div>
+          <div class="item item-stable item-icon-left item-button-right" style="height: 55px;">
+            <i class="icon ion-android-warning" style="font-size: 22px;"></i>
+             <span style="font-size:20px;">Warranty</span>
+          </div>
+          <div class="item item-text-wrap">
+            <div class="row">
+              <div class="col col-20">
+                <p>Warranty Period</p>                
+              </div>
+              <div class="col">
+                <h3>1  <span style="border-radius: 98px; background-color: #18BC9C; color: #FFFFFF;">&nbsp;&nbsp;In Warranty&nbsp;&nbsp;</span></h3>                
+              </div>
+            </div>
+          </div>
+          <div class="item item-stable item-icon-left item-button-right" style="height: 55px;">
+            <i class="icon ion-pricetag dark" style="font-size: 22px;"></i>
+            <span style="font-size:20px;">Payment</span>
+          </div>
+          <div class="item item-text-wrap">
+            <div class="row">
+              <div class="col col-20">
+                <p>Payment Status</p>
+              </div>    
+              <div class="col">
+                <h3>{{callVisit.activity.paymentStatus}}</h3>
+              </div>    
+            </div>            
+          </div>
+          <div class="item item-stable item-icon-left item-button-right" style="height: 55px;">
+            <i class="icon ion-calendar dark" style="font-size: 22px;"></i>
+            <span style="font-size:20px;">Scheduling</span>
+          </div>
+          <div class="item item-text-wrap">
+            <div class="row">
+              <div class="col col-20">
+                <p>Scheduled Date</p>
+                <p>Contact Name</p>
+              </div>
+              <div class="col">
+                <h3>{{callVisit.activity.scheduledDate | date : "MM/dd/yyyy 'at' HH:mm:ss" }}</h3>
+                <h3>{{callVisit.activity.contactName}}</h3>
+              </div>  
+            </div>
+            <ion-checkbox ng-model="callVisit.activity.servicemanContactedCustomer == 'Y'" class="checkbox-balanced">Contacted Customer</ion-checkbox>
+            <ion-checkbox ng-model="callVisit.activity.scheduleConfirmedByCustomer == 'Y'" class="checkbox-balanced">Confirmed By Customer</ion-checkbox>
+            <ion-checkbox ng-model="callVisit.activity.emergency == 'Y'" class="checkbox-balanced">Is Emergency</ion-checkbox>
+          </div>
+          <div class="item">
+            <a class="button icon-left ion-social-buffer button-dark" href="#/dash_activity_material_stock/{{callVisit.activity.serviceCallOutId}}">Materials/Stock Items</a>
+            <a class="button icon-left ion-compose button-balanced" href="#/dash_activity_comment/{{callVisit.activity.serviceCallOutId}}">Comments</a>
+          </div>
+        </div>
+        <div class="spacer" style="height: 70px;"></div>
+
+        <!--<div class="list ">
             <div class="item item-text-wrap item-icon-left " >
                   <i class="icon ion-android-home" style="font-size:20px !important;"></i>
                   <h2 >
                     Call out visit: {{callVisit.activity.serviceCallOutId}}</h2>
                     <p>Duration Time: 40 min</p>
-                    <p>Scheduled: {{callVisit.hr}}</p>                  
-                  <!--span class="item-note" style="position: absolute; top: 50px; right: 15px;">{{callVisit.hr}}</span-->
+                    <p>Scheduled: {{callVisit.hr}}</p>                                    
             </div>
             <div class="item item-text-wrap item-stable item-icon-left" >
                   <i class="icon ion-flag" style="font-size:20px !important;"></i>
@@ -74,7 +144,6 @@
                   <span >Fitting is in Warranty? </span>
                   <span ng-show = '{{callVisit.activity.inWarranty}}' class="badge badge-stable">Yes</span>
                   <span ng-show = '{{!callVisit.activity.inWarranty}}' class="badge badge-stable">No</span>
-
             </div>
 
             <div class="item item-text-wrap item-stable item-icon-left">
@@ -84,23 +153,23 @@
             </div>
             
             
-            <!--a class="button icon-left ion-android-time button-dark button-full" ng-click="startActivity()" ng-hide="isStarted || callVisit.activity.status == 'Finalized'">
+            <a class="button icon-left ion-android-time button-dark button-full" ng-click="startActivity()" ng-hide="isStarted || callVisit.activity.status == 'Finalized'">
                 <span style="position: absolute; left: 50px;">Start Visit</span>
                 <span class="item-note">{{callVisit.activity.status}}</span>
-            </a-->
+            </a>
 
-            <!--a class="item item-divider item-icon-left" href="#" ng-click="startActivity()" ng-hide="isStarted">
+            <a class="item item-divider item-icon-left" href="#" ng-click="startActivity()" ng-hide="isStarted">
                   <i class="icon ion-android-time" style="font-size:20px !important;"></i>
                   <span >Start Visit</span>
                   <span class="item-note">
                     {{callVisit.activity.status}}</span>
-            </a-->
+            </a>
 
-            <!--a class="button icon-left ion-android-time button-dark button-outline button-full" href="#/dash_activity_end/{{callVisit.activity.serviceCallOutId}}"  ng-hide="!isStarted || callVisit.activity.status == 'Finalized'">
+            <a class="button icon-left ion-android-time button-dark button-outline button-full" href="#/dash_activity_end/{{callVisit.activity.serviceCallOutId}}"  ng-hide="!isStarted || callVisit.activity.status == 'Finalized'">
                   <span style="position: absolute; left: 50px;">End Visit</span>
                   <span class="item-note">
                     {{callVisit.activity.status}}</span>
-            </a-->
+            </a>
 
             <div class="item item-text-wrap item-icon-left" ng-show="callVisit.activity.status == 'Finalized'">
                   <i class="icon ion-flag" style="font-size:20px !important;"></i>
@@ -114,55 +183,13 @@
                   <i class="icon ion-chevron-right" ></i>
                 </span>
             </a>
-
-            <!--a class="item item-divider item-icon-left" href="#/main/dash_activity_material_stock/{{callVisit.activity.serviceCallOutId}}">
-              <i class="icon ion-social-buffer" style="font-size:20px !important;"></i>
-              <span >Materials/Stock Items</span>
-              <span class="item-note"></span>
-            </a-->
-
+            
             <a class="button icon-left ion-compose button-positive button-full button-outline" href="#/dash_activity_comment/{{callVisit.activity.serviceCallOutId}}">
                 <span style="position: absolute; left: 50px;">Comments</span>
                 <span class="item-note">
                   <i class="icon ion-chevron-right" ></i>
                 </span>
-            </a>
-           
-            <!--div class="item item-text-wrap item-icon-left" >
-                <i class="icon ion-location" style="font-size:20px !important;"></i>
-                <span >Property Address</span>
-            </div> 
-            
-            <div id="mapVisit" data-tap-disabled="true"></div>
-            
-            
-            <div class="item item-text-wrap">
-                    <p>Address</p>
-                    <h2>{{callVisit.activity.address}}</h2>
-                    <br/>
-                    <p>Builder</p>
-                    <h2>{{callVisit.activity.builder}}</h2>
-                    <br/>
-                    <p>Builder Address</p>
-                    <h2>{{callVisit.activity.builderAddress}}</h2>
-                    <br/>
-                    <p>House type</p>
-                    <h2>{{callVisit.activity.houseType}}</h2>
-                    <br/>
-                    <p>Fitting is in Warranty?</p>
-                    <h2 ng-show = '{{callVisit.activity.inWarranty}}'>Yes</h2>                    
-                    <h2 ng-show = '{{!callVisit.activity.inWarranty}}'>No</h2>
-            </div-->
-
-            
-
-            
-
-        </div>
-
-        
+            </a>           
+        </div> -->      
     </ion-content>
-
-  
-      <!--<div ng-include src="'templates/notifications.html'"></div>-->
 </ion-view>

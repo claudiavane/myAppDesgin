@@ -80,7 +80,7 @@ DashActvityProductCtrl
 /********************************************
 DashActvityMaterialStockCtrl
 *********************************************/
-.controller('DashActvityMaterialStockCtrl', function ($scope, $state, $stateParams, $http, $ionicPopup, APP_PARAMS, $ionicHistory, $ionicPopup, $rootScope, $ionicLoading, $ionicModal, $cordovaNetwork, ProcessOut, Process, Material, ServicemanActivities, $ionicTabsDelegate) {
+.controller('DashActvityMaterialStockCtrl', function ($scope, $state, $stateParams, $http, $ionicPopup, APP_PARAMS, $ionicHistory, $ionicPopup, $rootScope, $ionicLoading, $ionicModal, $cordovaNetwork, $ionicActionSheet, $ionicTabsDelegate, ProcessOut, Process, Material, ServicemanActivities) {
 
     console.log("DashActvityMaterialStockCtrl ");
 
@@ -89,13 +89,11 @@ DashActvityMaterialStockCtrl
     $scope.stockItems = ServicemanActivities.getActivityStockItems($stateParams.activityId);
 
     $scope.activityId = $stateParams.activityId;
-
     $scope.isSplit = false;
   
     $scope.cancel = function() {   
         $ionicHistory.goBack();
-    } 
-    
+    }     
     
     $scope.addProduct = function(){        
         var tab = $ionicTabsDelegate.selectedIndex();        
@@ -104,48 +102,42 @@ DashActvityMaterialStockCtrl
         } else {
             $state.go('dash_product_add', {activityId:$scope.activityId});
         }        
-    }
-    
+    }  
 
     $scope.removeItems = function () {
+      var confirmPopup = $ionicPopup.confirm({
+       title: 'Remove Items',
+       template: 'Are you sure you want to remove?',
+       okType: APP_PARAMS.button_dialog
+      });
 
-        var confirmPopup = $ionicPopup.confirm({
-         title: 'Remove Items',
-         template: 'Are you sure you want to remove?',
-         okType: APP_PARAMS.button_dialog
-        });
-
-        confirmPopup.then(function(res) {
-             if(res) {
-                for (var i = 0; i < $scope.stockItems.length; i++) {
-                    if ($scope.stockItems[i].checked) {
-
-                        $scope.stockItems.splice($scope.stockItems.item, 1);
-                    };
-                };
-             } 
-        });
-        
+      confirmPopup.then(function(res) {
+        if(res) {
+          for (var i = 0; i < $scope.stockItems.length; i++) {
+            if ($scope.stockItems[i].checked) {
+                $scope.stockItems.splice($scope.stockItems.item, 1);
+            };
+          };
+        } 
+      });        
     }
 
     $scope.removeMaterials = function () {
+      var confirmPopup = $ionicPopup.confirm({
+       title: 'Remove Items',
+       template: 'Are you sure you want to remove?',
+       okType: APP_PARAMS.button_dialog
+      });
 
-        var confirmPopup = $ionicPopup.confirm({
-         title: 'Remove Items',
-         template: 'Are you sure you want to remove?',
-         okType: APP_PARAMS.button_dialog
-        });
-
-        confirmPopup.then(function(res) {
-             if(res) {
-                for (var i = 0; i < $scope.materials.length; i++) {
-                    if ($scope.materials[i].checked) {
-
-                        $scope.materials.splice($scope.materials.item, 1);
-                    };
-                };
-             } 
-        });        
+      confirmPopup.then(function(res) {
+        if(res) {
+          for (var i = 0; i < $scope.materials.length; i++) {
+            if ($scope.materials[i].checked) {
+                $scope.materials.splice($scope.materials.item, 1);
+            };
+          };
+        } 
+      });        
     }
 
     $scope.data = {
@@ -154,14 +146,67 @@ DashActvityMaterialStockCtrl
     };
 
     $scope.onItemDelete = function(item) {
-        $scope.materials.splice($scope.materials.indexOf(item), 1);
-        
+        $scope.materials.splice($scope.materials.indexOf(item), 1);        
     };
 
     $scope.onItemDeleteItem = function(item) {
-        $scope.stockItems.splice($scope.stockItems.indexOf(item), 1);
-        
+        $scope.stockItems.splice($scope.stockItems.indexOf(item), 1);        
     };
+
+    $ionicModal.fromTemplateUrl('templates/dash_activity_products_detail.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modalDetail = modal;
+    });
+
+    var loadDetail = function(item){
+        $scope.item =  item;
+        $scope.detail = [{text: 'Description', value: 'This is a description of the MAT0006'},
+                {text: 'Adjustments', value: 'A, B'},
+                {text: 'Price', value: 'Awaiting Approval'},
+                {text: 'Status', value: 'Active'},
+                {text: 'Service Rep Comment', value: 'Comment'},
+                {text: 'Problem Code', value: 'Problem'},
+                {text: 'Serviceman Comment', value: 'Comments'},
+                {text: 'Serviceman Drawings', value: 'Drawings'},
+                {text: 'Serviceman Images', value: 'Images'},
+                {text: 'Reason Code', value: 'Reason'},
+                {text: 'Created By', value: 'John'},
+                {text: 'Created Date', value: new Date('01/01/2016 07:00:00')},
+                {text: 'Updated By', value: ''},
+                {text: 'Updated Date', value: null}];
+    }
+    $scope.openDetail = function (item) {
+        loadDetail(item);
+        $scope.modalDetail.show();        
+    };
+    $scope.closeDetail = function() {             
+        $scope.modalDetail.hide();
+    };
+    $scope.showActionsheet = function(item) {      
+        var options = [{ text: '<i class="icon ion-edit dark"></i> Edit' },
+                       { text: '<i class="icon ion-information-circled dark"></i> View Detail' }];
+        
+        $ionicActionSheet.show({
+            titleText: 'Options',
+            cancelText: 'Cancel',
+            cancel: function() {
+                console.log('CANCELLED');
+            },
+            buttons: options,
+            buttonClicked: function(index) {
+                switch (index){
+                    case 0 :
+                        $state.go('dash_material_edit', {activityId: $scope.activityId});
+                        return true;
+                    case 1 :
+                        $scope.openDetail(item);
+                        return true;                    
+                }                
+            }
+        });  
+    }
 
 })
 

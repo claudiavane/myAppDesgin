@@ -252,13 +252,9 @@ WorkqueueMainCtrl
                         $state.go('dash_activity', {activityId: item.activity.serviceCallOutId});
                         return true;
                     }
-
                 }
             }
-
         });  
-
-
     }
 
 })

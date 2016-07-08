@@ -1,34 +1,21 @@
 <ion-view view-title="Comments" name="create-request-view">
-    <!--ion-nav-buttons side="right">
-      <button class="button button-icon button-clear ion-ios-close-empty" ng-click="cancel()"></button>&nbsp;&nbsp;&nbsp;&nbsp;
-      <button class="button button-icon button-clear ion-ios-checkmark-outline" ng-click="goRequestStockSelected()" ></button>
-    </ion-nav-buttons-->
-    
-    <!--a class="button btn btn-right light" ng-click="addComment(activityId)"><i class="ion-plus"></i></a-->
+   
     <ion-content has-bouncing="true" class="has-header has-footer"
                  on-swipe-left="hideTime = false"
                  on-swipe-right="hideTime = true" >
 
-        <!--div class="item item-input-inset" >
-            <label class="item-input-wrapper">
-                <i class="icon ion-search placeholder-icon"></i>
-                <input type="text" ng-model="searchQuery" placeholder="Search Comments"></input>
-            </label>            
-        </div-->
+        
         <div ng-repeat="item in materials"
            class="message-wrapper">
 
            <div ng-if="user.created_byId !== item.created_byId">
-
                <img class="profile-pic left" 
                           ng-src="{{item.created_byPic}}" onerror="onProfilePicError(this)" />
 
-               <div class="chat-bubble left">
-                    
+               <div class="chat-bubble left">                    
                     <div class="message" >
                       <span >{{ item.comment }}</span>
                     </div>
-
                     <div class="message-detail">                              
                           <span class="bold">{{item.created_by}}</span>,
                           <span >{{item.created_date | date:'dd-MM-yyyy'}}</span>
@@ -38,6 +25,7 @@
             <div ng-if="user.created_byId === item.created_byId">
                <img class="profile-pic right" 
                           ng-src="{{item.created_byPic}}" onerror="onProfilePicError(this)" />
+                          
                <div class="chat-bubble right">
                     <div class="message" >
                       <span >{{ item.comment }}</span>
@@ -51,34 +39,18 @@
             </div>
             <div class="cf"></div>
         </div>
-
-        <!--div class="list">
-            <ion-item class="item item-icon-left item-icon-right" ng-repeat="item in materials | filter:searchQuery" href="#" >
-                <i class="icon ion-android-hangout"></i>
-                <h2>{{item.comment}}</h2><br>
-                <p>Created By: {{item.created_by}}</p>
-                <p>Created Date: {{item.created_date | date:'dd-MM-yyyy'}}</p>                 
-            </ion-item>
-        </div-->
         <div class="spacer" style="height: 80px;"></div>        
     </ion-content>
 
-    <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach style="margin-bottom: 44px;">
+    <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach style="margin-bottom: 45px;">
       <label class="item-input-wrapper">
         
-        
-
         <input type="text" placeholder="Type your comment" on-return="addComment(); closeKeyboard()" ng-model="data.comment" on-focus="inputUp()" on-blur="inputDown()" />
 
       </label>
-      <button class="button button-dark" ng-click="addComment()">
+      <button class="button button-dark button-large" ng-click="addComment()">
         Add Comment
-      </button>
-      <!--div class="footer-btn-wrap">
-        <button class="button button-icon icon ion-android-send footer-btn" type="submit"
-            ng-disabled="!data.comment || data.comment === ''" ng-click="addComment()">
-        </button>
-      </div-->
+      </button>      
     </ion-footer-bar>
     
     <!--div ng-include src="'templates/notifications.html'"></div-->
